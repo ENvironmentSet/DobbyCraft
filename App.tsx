@@ -64,7 +64,7 @@ const MainSwitch = createSwitchNavigator(
     Home: HomeStack,
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Loading',
   },
 );
 
