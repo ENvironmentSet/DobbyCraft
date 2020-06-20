@@ -7,8 +7,8 @@ import {
   SafeAreaView,
   FlatList,
 } from 'react-native';
-import MenuItem from '../components/MenuItem';
-import SnsLastFeed from '../components/SnsLastFeed';
+import MenuItem from '../../components/MenuItem';
+import SnsLastFeed from '../../components/SnsLastFeed';
 //@ts-ignore
 import { SliderBox } from 'react-native-image-slider-box';
 import { NavigationScreenProp } from 'react-navigation';

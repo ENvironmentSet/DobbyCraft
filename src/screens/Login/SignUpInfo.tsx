@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View, StyleSheet, ViewStyle, Alert } from 'react-native';
-import Button from '../components/Button';
-import AuthHeader from '../components/AuthHeader';
-import LabelledInput from '../components/LabelledInput';
-import AgreementPolicy from '../components/AgreementPolicy';
+import Button from '../../components/Button';
+import AuthHeader from '../../components/AuthHeader';
+import LabelledInput from '../../components/LabelledInput';
+import AgreementPolicy from '../../components/AgreementPolicy';
 import { NavigationScreenProp } from 'react-navigation';
 
 interface SignUpInfoProps {

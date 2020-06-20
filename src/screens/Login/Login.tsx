@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Alert } from 'react-native';
-import Button from '../components/Button';
-import LabelledInput from '../components/LabelledInput';
-import AuthHeader from '../components/AuthHeader';
+import React, { useState } from 'react';
+import { StyleSheet, View, SafeAreaView, Alert } from 'react-native';
+import Button from '../../components/Button';
+import LabelledInput from '../../components/LabelledInput';
+import AuthHeader from '../../components/AuthHeader';
 import { NavigationScreenProp } from 'react-navigation';
 
 interface LoginProps {

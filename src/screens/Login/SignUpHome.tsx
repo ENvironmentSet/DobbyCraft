@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, ViewStyle, View, SafeAreaView, Alert } from 'react-native';
-import AuthHeader from '../components/AuthHeader';
-import Button from '../components/Button';
+import AuthHeader from '../../components/AuthHeader';
+import Button from '../../components/Button';
 import { NavigationScreenProp } from 'react-navigation';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 

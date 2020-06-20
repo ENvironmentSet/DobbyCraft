@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import Button from '../components/Button';
+import Button from '../../components/Button';
 import { NavigationScreenProp } from 'react-navigation';
 
 interface SignUpFinProps {

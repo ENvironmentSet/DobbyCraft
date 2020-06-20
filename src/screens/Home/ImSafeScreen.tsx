@@ -57,33 +57,54 @@ const ImSafeScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
             <Text style={{ color: '#fff', fontSize: 20 }}>I have been at</Text>
             <Text style={{ color: '#fff', fontSize: 20 }}>home for</Text>
             <Text style={{ color: '#fff', fontSize: 100 }}>60</Text>
-            <Text style={{ color: '#fff', fontSize: 20 }}>hours & 20 minutes</Text>
+            <Text style={{ color: '#fff', fontSize: 20 }}>
+              hours & 20 minutes
+            </Text>
             <Text style={{ color: '#fff', fontSize: 20 }}>INCHEON-SI</Text>
           </View>
-          <View style={{ marginTop: 'auto' ,flexDirection: 'row', marginRight: 'auto', marginLeft: 15, marginBottom : 10 }}>
+          <View
+            style={{
+              marginTop: 'auto',
+              flexDirection: 'row',
+              marginRight: 'auto',
+              marginLeft: 15,
+              marginBottom: 10,
+            }}>
             <Text style={{ color: '#fff', fontSize: 20 }}>#StopTheSpread</Text>
-            <Text style={{ color: '#fff', fontSize: 20, marginLeft: 10 }}>#StayHome</Text>
+            <Text style={{ color: '#fff', fontSize: 20, marginLeft: 10 }}>
+              #StayHome
+            </Text>
           </View>
         </LinearGradient>
-        <View style={{
-          width: '100%',
-          height: 80,
-          backgroundColor: '#fff',
-          shadowColor: "#000",
-          shadowOffset: {
-            width: 0,
-            height: 2,
-          },
-          shadowOpacity: 0.25,
-          shadowRadius: 3.84,
-          
-          elevation: 5,
-          borderBottomLeftRadius: 13,
-          borderBottomRightRadius: 13,
-        }}>
-          <Text style={{ marginTop: "auto", marginLeft: 'auto', marginBottom: 10, marginRight: 10, fontWeight: 'bold', fontSize: 15 }}>@ userName</Text>
+        <View
+          style={{
+            width: '100%',
+            height: 80,
+            backgroundColor: '#fff',
+            shadowColor: '#000',
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+
+            elevation: 5,
+            borderBottomLeftRadius: 13,
+            borderBottomRightRadius: 13,
+          }}>
+          <Text
+            style={{
+              marginTop: 'auto',
+              marginLeft: 'auto',
+              marginBottom: 10,
+              marginRight: 10,
+              fontWeight: 'bold',
+              fontSize: 15,
+            }}>
+            @ userName
+          </Text>
         </View>
-        
       </View>
     </SafeAreaView>
   );

@@ -8,7 +8,7 @@ import {
   FlatList,
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
-import QuestionItem from '../components/QuestionItem';
+import QuestionItem from '../../components/QuestionItem';
 import { NavigationScreenProp } from 'react-navigation';
 
 const CloseIcn = require('../assets/x.png');

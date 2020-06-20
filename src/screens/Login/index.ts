@@ -7,11 +7,11 @@ import Login from './Login';
 
 const LoginStack = createStackNavigator(
   {
-    Choose: Choose,
-    SignUpInfo: SignUpInfo,
-    SignUpHome: SignUpHome,
-    SignUpFin: SignUpFin,
-    Login: Login,
+    Choose,
+    SignUpInfo,
+    SignUpHome,
+    SignUpFin,
+    Login,
   },
   {
     headerMode: 'none',
