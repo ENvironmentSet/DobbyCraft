@@ -25,7 +25,7 @@ const BottomData = [
   },
   {
     title: 'Safe\nBuildings',
-    screen: 'SafeBuliding',
+    screen: 'SafeBuilding',
     imoge: '🏢',
   },
   {
