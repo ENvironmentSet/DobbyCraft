@@ -82,10 +82,10 @@ const GuidelineScreen: React.FC<HealthCheckProps> = ({ navigation }) => {
           if (ix === nowIndex) {
             return (
               <>
-                <Text style={{ fontSize: 100, marginTop: 'auto' }}>
+                <Text style={{ fontSize: 100, marginTop: 'auto' }} key={item.imoge}>
                   {item.imoge}
                 </Text>
-                <Text style={{ fontSize: 30, marginTop: 'auto' }}>
+                <Text style={{ fontSize: 30, marginTop: 'auto' }} key={item.text}>
                   {item.text}
                 </Text>
               </>
