@@ -20,7 +20,7 @@ const BottomData = [
   },
   {
     title: "I'm Safe!",
-    screen: 'Safe',
+    screen: 'ImSafe',
     imoge: '🙆‍♀️',
   },
   {
