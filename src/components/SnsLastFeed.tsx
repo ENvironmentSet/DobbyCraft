@@ -4,15 +4,17 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { useUserData } from '../User';
 
 interface SnsLast {
-  feed : {
+  feed: {
     author: string;
     title: string;
     link: string;
     linkText: string;
-  }
+  };
 }
 
-const SnsLastFeed: React.FC<SnsLast> = ({ feed : { author, title, link, linkText } }) => {
+const SnsLastFeed: React.FC<SnsLast> = ({
+  feed: { author, title, link, linkText },
+}) => {
   const { name } = useUserData();
 
   return (
@@ -20,8 +22,7 @@ const SnsLastFeed: React.FC<SnsLast> = ({ feed : { author, title, link, linkText
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <View style={{ width: 30, height: 30, backgroundColor: '#000' }} />
         <Text style={{ marginLeft: 17, fontWeight: 'bold' }}>{author}</Text>
-        <TouchableWithoutFeedback
-          onPress={() => Linking.openURL(link)}>
+        <TouchableWithoutFeedback onPress={() => Linking.openURL(link)}>
           <Text
             style={{ marginLeft: 10, fontWeight: 'bold', color: '#007AFF' }}>
             {linkText}
@@ -29,9 +30,7 @@ const SnsLastFeed: React.FC<SnsLast> = ({ feed : { author, title, link, linkText
         </TouchableWithoutFeedback>
       </View>
       <View style={{ marginTop: 10 }}>
-        <Text>
-          {title}
-        </Text>
+        <Text>{title}</Text>
       </View>
     </View>
   );

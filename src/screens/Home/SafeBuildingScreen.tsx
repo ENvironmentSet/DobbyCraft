@@ -225,21 +225,18 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
               </Text>
               <AgreementPolicy label="Yes" />
               <AgreementPolicy label="No" />
-              <AgreementPolicy label="Not Applicable" />
               <AgreementPolicy label="Unable to know" />
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
                 2. Is the sanitizer placed all over the building?
               </Text>
               <AgreementPolicy label="Yes" />
               <AgreementPolicy label="No" />
-              <AgreementPolicy label="Not Applicable" />
               <AgreementPolicy label="Unable to know" />
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
                 3. Does disinfection run or a regular?
               </Text>
               <AgreementPolicy label="Yes" />
               <AgreementPolicy label="No" />
-              <AgreementPolicy label="Not Applicable" />
               <AgreementPolicy label="Unable to know" />
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
                 4. Is the thermal sensing camera is at the entrance to the
@@ -247,7 +244,6 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
               </Text>
               <AgreementPolicy label="Yes" />
               <AgreementPolicy label="No" />
-              <AgreementPolicy label="Not Applicable" />
               <AgreementPolicy label="Unable to know" />
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
                 5. Is the clinical thermometer is at the entrance to the
@@ -255,21 +251,18 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
               </Text>
               <AgreementPolicy label="Yes" />
               <AgreementPolicy label="No" />
-              <AgreementPolicy label="Not Applicable" />
               <AgreementPolicy label="Unable to know" />
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
                 6. Do Most People wear masks ?
               </Text>
               <AgreementPolicy label="Yes" />
               <AgreementPolicy label="No" />
-              <AgreementPolicy label="Not Applicable" />
               <AgreementPolicy label="Unable to know" />
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
                 7. Let us know if anything to add or comment on? (optional)
               </Text>
               <AgreementPolicy label="Yes" />
               <AgreementPolicy label="No" />
-              <AgreementPolicy label="Not Applicable" />
               <AgreementPolicy label="Unable to know" />
             </ScrollView>
           </View>

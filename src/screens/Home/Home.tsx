@@ -13,8 +13,8 @@ import SnsLastFeed from '../../components/SnsLastFeed';
 import { SliderBox } from 'react-native-image-slider-box';
 import { NavigationScreenProp } from 'react-navigation';
 import moment from 'moment';
-import {runStayTimer, stopStayTimer} from '../StayedTime';
-import {useUserData} from '../../User';
+import { runStayTimer, stopStayTimer } from '../StayedTime';
+import { useUserData } from '../../User';
 import request from '../../utils/request';
 
 const BottomData = [
@@ -53,8 +53,8 @@ interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({ navigation }) => {
   const { home } = useUserData();
-  const [images, setImages] = useState([])
-  const [feed, setFeed] = useState({})
+  const [images, setImages] = useState([]);
+  const [feed, setFeed] = useState({});
   useEffect(() => {
     if (home !== undefined) {
       const { latitude, longitude } = home;
@@ -66,17 +66,16 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
       return stopStayTimer;
     }
 
-      const load = async () => {
-        await request<{ result: 0 | 1 }>('home', {
-          method: 'GET',
-        }).then(res => {
-          setImages(res.banner)
-          setFeed(res.latestNews)
-        })
-      }
-  
-      load()
-  
+    const load = async () => {
+      await request<{ result: 0 | 1 }>('home', {
+        method: 'GET',
+      }).then(res => {
+        setImages(res.banner);
+        setFeed(res.latestNews);
+      });
+    };
+
+    load();
   }, [home]);
 
   return (
@@ -149,5 +148,3 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
 });
-
-
