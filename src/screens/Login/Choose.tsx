@@ -22,9 +22,21 @@ const Choose: React.FC<ChooseProps> = ({ navigation }) => {
       source={{ uri: 'http://link.juneyoung.io/static/splash.png' }}>
       <View style={{ flex: 1 }}>
         <SafeAreaView style={styles.container}>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <FastImage source={require("../../assets/safeme.png")} style={{ width: 100, height: 100 }} />
-            <Text style={{ fontSize: 23, marginTop: 10, color: '#0779E4', fontWeight: '600'  }}>SafeMe</Text>
+          <View
+            style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <FastImage
+              source={require('../../assets/safeme.png')}
+              style={{ width: 100, height: 100 }}
+            />
+            <Text
+              style={{
+                fontSize: 23,
+                marginTop: 10,
+                color: '#0779E4',
+                fontWeight: '600',
+              }}>
+              SafeMe
+            </Text>
           </View>
           <TouchableWithoutFeedback
             onPress={() => navigation.navigate('Login')}>

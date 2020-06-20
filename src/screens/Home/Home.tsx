@@ -13,8 +13,8 @@ import SnsLastFeed from '../../components/SnsLastFeed';
 import { SliderBox } from 'react-native-image-slider-box';
 import { NavigationScreenProp } from 'react-navigation';
 import moment from 'moment';
-import {runStayTimer, stopStayTimer} from '../StayedTime';
-import {useUserData} from '../../User';
+import { runStayTimer, stopStayTimer } from '../StayedTime';
+import { useUserData } from '../../User';
 
 const BottomData = [
   {
