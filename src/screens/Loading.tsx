@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { NavigationScreenProp, SafeAreaView } from 'react-navigation';
-import LoadingComponents from '../components/Loading';
+import Loading from '../components/Loading';
 
 interface LoadingScreenProps {
   navigation: NavigationScreenProp<{}>;
 }
 
-class Loading extends React.Component<LoadingScreenProps> {
+class LoadingScreen extends React.Component<LoadingScreenProps> {
   componentDidMount() {
     const { navigation } = this.props;
     setTimeout(() => navigation.navigate('Login'), 1000);
@@ -16,10 +16,10 @@ class Loading extends React.Component<LoadingScreenProps> {
     return (
       <SafeAreaView
         style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <LoadingComponents />
+        <Loading />
       </SafeAreaView>
     );
   }
 }
 
-export default Loading;
+export default LoadingScreen;
