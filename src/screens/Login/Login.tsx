@@ -9,7 +9,7 @@ interface LoginProps {
   navigation: NavigationScreenProp<{}>;
 }
 
-const LoginScreen: React.FC<LoginProps> = ({ navigation }) => {
+const Login: React.FC<LoginProps> = ({ navigation }) => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
@@ -68,7 +68,7 @@ const LoginScreen: React.FC<LoginProps> = ({ navigation }) => {
   );
 };
 
-export default LoginScreen;
+export default Login;
 
 const styles = StyleSheet.create({
   container: {

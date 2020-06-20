@@ -13,7 +13,7 @@ interface ChooseProps {
   navigation: NavigationScreenProp<{}>;
 }
 
-const ChooseScreen: React.FC<ChooseProps> = ({ navigation }) => {
+const Choose: React.FC<ChooseProps> = ({ navigation }) => {
   return (
     <View style={{ backgroundColor: 'red', flex: 1 }}>
       <SafeAreaView style={styles.container}>
@@ -34,7 +34,7 @@ const ChooseScreen: React.FC<ChooseProps> = ({ navigation }) => {
   );
 };
 
-export default ChooseScreen;
+export default Choose;
 
 const styles = StyleSheet.create({
   container: {

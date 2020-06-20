@@ -7,7 +7,7 @@ interface SignUpFinProps {
   navigation: NavigationScreenProp<{}>;
 }
 
-const SignUpFinScreen: React.FC<SignUpFinProps> = ({ navigation }) => {
+const SignUpFin: React.FC<SignUpFinProps> = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.wrapper}>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -24,7 +24,7 @@ const SignUpFinScreen: React.FC<SignUpFinProps> = ({ navigation }) => {
   );
 };
 
-export default SignUpFinScreen;
+export default SignUpFin;
 
 const styles = StyleSheet.create({
   wrapper: {

@@ -32,7 +32,7 @@ interface HealthCheckProps {
   navigation: NavigationScreenProp<{}>;
 }
 
-const HealthCheckScreen: React.FC<HealthCheckProps> = ({ navigation }) => {
+const HealthCheck: React.FC<HealthCheckProps> = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View
@@ -74,7 +74,7 @@ const HealthCheckScreen: React.FC<HealthCheckProps> = ({ navigation }) => {
   );
 };
 
-export default HealthCheckScreen;
+export default HealthCheck;
 
 const styles = StyleSheet.create({
   container: {

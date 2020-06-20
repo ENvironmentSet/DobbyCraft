@@ -10,7 +10,7 @@ interface SignUpInfoProps {
   navigation: NavigationScreenProp<{}>;
 }
 
-const SignUpInfoScreen: React.FC<SignUpInfoProps> = ({ navigation }) => {
+const SignUpInfo: React.FC<SignUpInfoProps> = ({ navigation }) => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmedPassword, setConfirmedPassword] = useState('');
@@ -94,4 +94,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignUpInfoScreen;
+export default SignUpInfo;

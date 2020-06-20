@@ -6,7 +6,7 @@ interface LoadingScreenProps {
   navigation: NavigationScreenProp<{}>;
 }
 
-class LoadingScreen extends React.Component<LoadingScreenProps> {
+class Loading extends React.Component<LoadingScreenProps> {
   componentDidMount() {
     const { navigation } = this.props;
     setTimeout(() => navigation.navigate('Login'), 1000);
@@ -22,4 +22,4 @@ class LoadingScreen extends React.Component<LoadingScreenProps> {
   }
 }
 
-export default LoadingScreen;
+export default Loading;

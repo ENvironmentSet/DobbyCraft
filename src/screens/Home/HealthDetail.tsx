@@ -16,7 +16,7 @@ interface HealthDetailProps {
   navigation: NavigationScreenProp<{}>;
 }
 
-const HealthDetailScreen: React.FC<HealthDetailProps> = ({ navigation }) => {
+const HealthDetail: React.FC<HealthDetailProps> = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View
@@ -44,7 +44,7 @@ const HealthDetailScreen: React.FC<HealthDetailProps> = ({ navigation }) => {
   );
 };
 
-export default HealthDetailScreen;
+export default HealthDetail;
 
 const styles = StyleSheet.create({
   container: {

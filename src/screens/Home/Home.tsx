@@ -46,7 +46,7 @@ interface HomeProps {
   navigation: NavigationScreenProp<{}>;
 }
 
-const HomeScreen: React.FC<HomeProps> = ({ navigation }) => {
+const Home: React.FC<HomeProps> = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.topDivision}>
@@ -79,7 +79,7 @@ const HomeScreen: React.FC<HomeProps> = ({ navigation }) => {
   );
 };
 
-export default HomeScreen;
+export default Home;
 
 const styles = StyleSheet.create({
   container: {

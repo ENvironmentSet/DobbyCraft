@@ -11,7 +11,7 @@ interface SignUpHomeProps {
   navigation: NavigationScreenProp<{}>;
 }
 
-const SignUpHomeScreen: React.FC<SignUpHomeProps> = ({ navigation }) => {
+const SignUpHome: React.FC<SignUpHomeProps> = ({ navigation }) => {
   const [latitude, setLatitude] = useState(37.5030415);
   const [longitude, setLongitude] = useState(126.946423);
   const [latitudeDelta, setLatitudeDelta] = useState(0.001);
@@ -78,7 +78,7 @@ const SignUpHomeScreen: React.FC<SignUpHomeProps> = ({ navigation }) => {
   );
 };
 
-export default SignUpHomeScreen;
+export default SignUpHome;
 
 const styles = StyleSheet.create({
   container: {
