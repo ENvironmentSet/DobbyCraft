@@ -3,27 +3,34 @@ import { StyleSheet, Text, View, Linking } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { useUserData } from '../User';
 
-const SnsLastFeed: React.FC = () => {
+interface SnsLast {
+  feed : {
+    author: string;
+    title: string;
+    link: string;
+    linkText: string;
+  }
+}
+
+const SnsLastFeed: React.FC<SnsLast> = ({ feed : { author, title, link, linkText } }) => {
   const { name } = useUserData();
 
   return (
     <View style={styles.container}>
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <View style={{ width: 30, height: 30, backgroundColor: '#000' }} />
-        <Text style={{ marginLeft: 17, fontWeight: 'bold' }}>{name}</Text>
+        <Text style={{ marginLeft: 17, fontWeight: 'bold' }}>{author}</Text>
         <TouchableWithoutFeedback
-          onPress={() => Linking.openURL('https://m.naver.com')}>
+          onPress={() => Linking.openURL(link)}>
           <Text
             style={{ marginLeft: 10, fontWeight: 'bold', color: '#007AFF' }}>
-            @ snsService, time ago
+            {linkText}
           </Text>
         </TouchableWithoutFeedback>
       </View>
       <View style={{ marginTop: 10 }}>
         <Text>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-          mollitia itaque saepe nihil dignissimos architecto praesentium dolores
-          iure. Mollitia corrupti,
+          {title}
         </Text>
       </View>
     </View>
