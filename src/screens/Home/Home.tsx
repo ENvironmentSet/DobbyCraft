@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -15,6 +15,7 @@ import { NavigationScreenProp } from 'react-navigation';
 import moment from 'moment';
 import {runStayTimer, stopStayTimer} from '../StayedTime';
 import {useUserData} from '../../User';
+import request from '../../utils/request';
 
 const BottomData = [
   {
@@ -52,7 +53,8 @@ interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({ navigation }) => {
   const { home } = useUserData();
-
+  const [images, setImages] = useState([])
+  const [feed, setFeed] = useState({})
   useEffect(() => {
     if (home !== undefined) {
       const { latitude, longitude } = home;
@@ -63,6 +65,18 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
       });
       return stopStayTimer;
     }
+
+      const load = async () => {
+        await request<{ result: 0 | 1 }>('home', {
+          method: 'GET',
+        }).then(res => {
+          setImages(res.banner)
+          setFeed(res.latestNews)
+        })
+      }
+  
+      load()
+  
   }, [home]);
 
   return (
@@ -71,9 +85,9 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
         <Text style={styles.Date}>{moment().format('dddd DD MMMM')}</Text>
         <Text style={styles.header}>Stay Safe!</Text>
         <Text style={styles.desc}>Latest News</Text>
-        <SnsLastFeed />
+        <SnsLastFeed feed={feed} />
         <View style={{ position: 'absolute', top: 250, left: -30 }}>
-          <SliderBox images={Images} />
+          <SliderBox images={images} />
         </View>
       </View>
       <View style={styles.bottomDivision}>
@@ -135,3 +149,5 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
 });
+
+
