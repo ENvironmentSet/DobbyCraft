@@ -33,7 +33,6 @@ class App extends React.Component<{}> {
       await Permissions.request('storage', { type: 'always' });
 
     NetInfo.fetch().then(state => {
-      // Not Connected Network.
       !state.isConnected &&
         Alert.alert(
           '알림',
@@ -43,9 +42,9 @@ class App extends React.Component<{}> {
               text: '확인',
               onPress: () => {
                 if (Platform.OS === 'ios') {
-                  exitApp.exitApp(); //Exit
+                  exitApp.exitApp();
                 } else {
-                  BackHandler.exitApp(); //Exit
+                  BackHandler.exitApp();
                 }
               },
             },
@@ -59,7 +58,7 @@ class App extends React.Component<{}> {
     return (
       <View style={styles.container}>
         <MapView
-          provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+          provider={PROVIDER_GOOGLE}
           style={styles.map}
           region={{
             latitude: 37.78825,
