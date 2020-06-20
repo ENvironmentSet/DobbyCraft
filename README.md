@@ -1,5 +1,19 @@
 ### 필수!
 
+```
+npm run clean-cache
+```
+를 실행하세요
+
+node_modules를 재설치하세요.
+
+```
+cd ios
+pod install
+```
+을 해주세요.
+
+
 node_modules/react-native-permissions/ios/RNPermissions.m 파일의 
 
 ```swift

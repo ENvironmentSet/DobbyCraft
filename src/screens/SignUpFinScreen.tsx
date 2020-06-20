@@ -4,7 +4,7 @@ import Button from '../components/Button';
 import { NavigationScreenProp } from 'react-navigation';
 
 interface SignUpFinProps {
-    navigation: NavigationScreenProp<{}>;
+  navigation: NavigationScreenProp<{}>;
 }
 
 const SignUpFinScreen: React.FC<SignUpFinProps> = ({ navigation }) => {
@@ -12,9 +12,14 @@ const SignUpFinScreen: React.FC<SignUpFinProps> = ({ navigation }) => {
     <SafeAreaView style={styles.wrapper}>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text style={{ fontSize: 30, fontWeight: '900' }}>Hello,</Text>
-        <Text style={{ fontSize: 20, fontWeight: '700', marginTop: 10 }}>@gwonHeeJun</Text>
+        <Text style={{ fontSize: 20, fontWeight: '700', marginTop: 10 }}>
+          @gwonHeeJun
+        </Text>
       </View>
-      <Button buttonLabel="SIGN IN NOW" onClickButton={() => navigation.navigate("Login")} />
+      <Button
+        buttonLabel="SIGN IN NOW"
+        onClickButton={() => navigation.navigate('Login')}
+      />
     </SafeAreaView>
   );
 };
