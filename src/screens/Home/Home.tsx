@@ -12,6 +12,7 @@ import SnsLastFeed from '../../components/SnsLastFeed';
 //@ts-ignore
 import { SliderBox } from 'react-native-image-slider-box';
 import { NavigationScreenProp } from 'react-navigation';
+import moment from 'moment';
 const BottomData = [
   {
     title: 'Guidelines',
@@ -50,7 +51,7 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.topDivision}>
-        <Text style={styles.Date}>FRIDAY 6 NOVEMBER</Text>
+        <Text style={styles.Date}>{moment().format('dddd DD MMMM')}</Text>
         <Text style={styles.header}>Stay Safe!</Text>
         <Text style={styles.desc}>Latest News</Text>
         <SnsLastFeed />

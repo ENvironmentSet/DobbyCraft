@@ -1,13 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View, Linking } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { useUserData } from '../User';
 
 const SnsLastFeed: React.FC = () => {
+  const { name } = useUserData();
+
   return (
     <View style={styles.container}>
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <View style={{ width: 30, height: 30, backgroundColor: '#000' }} />
-        <Text style={{ marginLeft: 17, fontWeight: 'bold' }}>userIdFeed</Text>
+        <Text style={{ marginLeft: 17, fontWeight: 'bold' }}>{name}</Text>
         <TouchableWithoutFeedback onPress={() => Linking.openURL('https://m.naver.com')}>
           <Text
             style={{ marginLeft: 10, fontWeight: 'bold', color: '#007AFF' }}>
