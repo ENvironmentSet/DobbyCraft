@@ -10,7 +10,7 @@ import {
 import { NavigationScreenProp } from 'react-navigation';
 import FastImage from 'react-native-fast-image';
 
-const BackIcn = require('../assets/back.png');
+const BackIcn = require('../../assets/back.png');
 
 interface HealthDetailProps {
   navigation: NavigationScreenProp<{}>;

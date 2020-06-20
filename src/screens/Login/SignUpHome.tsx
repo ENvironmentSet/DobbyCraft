@@ -5,7 +5,7 @@ import Button from '../../components/Button';
 import { NavigationScreenProp } from 'react-navigation';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 
-const marker = require('../assets/marker.png');
+const marker = require('../../assets/marker.png');
 
 interface SignUpHomeProps {
   navigation: NavigationScreenProp<{}>;

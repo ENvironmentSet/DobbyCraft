@@ -11,7 +11,7 @@ import FastImage from 'react-native-fast-image';
 import QuestionItem from '../../components/QuestionItem';
 import { NavigationScreenProp } from 'react-navigation';
 
-const CloseIcn = require('../assets/x.png');
+const CloseIcn = require('../../assets/x.png');
 
 const Data = [
   {

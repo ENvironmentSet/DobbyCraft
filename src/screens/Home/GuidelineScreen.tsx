@@ -9,7 +9,7 @@ import { NavigationScreenProp } from 'react-navigation';
 import FastImage from 'react-native-fast-image';
 import Button from '../../components/Button';
 
-const CloseIcn = require('../assets/x.png');
+const CloseIcn = require('../../assets/x.png');
 
 interface HealthCheckProps {
   navigation: NavigationScreenProp<{}>;

@@ -9,7 +9,7 @@ import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import FastImage from 'react-native-fast-image';
 import { NavigationScreenProp } from 'react-navigation';
 
-const CloseIcn = require('../assets/x.png');
+const CloseIcn = require('../../assets/x.png');
 
 interface SafeBuildingProps {
   navigation: NavigationScreenProp<{}>;

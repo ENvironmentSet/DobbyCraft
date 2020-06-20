@@ -40,16 +40,7 @@ const Login: React.FC<LoginProps> = ({ navigation }) => {
           const testPassword = /[A-Za-z]\w{7,19}/;
 
           if (testUserName.test(userName) && testPassword.test(password)) {
-            Alert.alert(
-              '알림',
-              '네모바지 스폰지송~!~!~!🤪',
-              [
-                {
-                  text: '확인',
-                },
-              ],
-              { cancelable: false },
-            );
+            navigation.navigate("Home")
           } else {
             Alert.alert(
               '알림',

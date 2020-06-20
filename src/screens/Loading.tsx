@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NavigationScreenProp, SafeAreaView } from 'react-navigation';
-import Loading from '../components/Loading';
+import LoadingComponents from '../components/Loading';
 
 interface LoadingScreenProps {
   navigation: NavigationScreenProp<{}>;
@@ -16,7 +16,7 @@ class Loading extends React.Component<LoadingScreenProps> {
     return (
       <SafeAreaView
         style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Loading />
+        <LoadingComponents />
       </SafeAreaView>
     );
   }

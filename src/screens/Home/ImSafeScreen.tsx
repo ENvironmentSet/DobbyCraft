@@ -11,7 +11,7 @@ import { NavigationScreenProp } from 'react-navigation';
 import FastImage from 'react-native-fast-image';
 import LinearGradient from 'react-native-linear-gradient';
 
-const BackIcn = require('../assets/back.png');
+const BackIcn = require('../../assets/back.png');
 
 interface SafeBuildingProps {
   navigation: NavigationScreenProp<{}>;
