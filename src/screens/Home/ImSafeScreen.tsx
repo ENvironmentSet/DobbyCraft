@@ -11,6 +11,7 @@ import { NavigationScreenProp } from 'react-navigation';
 import FastImage from 'react-native-fast-image';
 import LinearGradient from 'react-native-linear-gradient';
 import BoxedShare from '../../components/SharedBox';
+import { useUserData } from '../../User';
 
 const BackIcn = require('../../assets/back.png');
 
@@ -19,6 +20,8 @@ interface SafeBuildingProps {
 }
 
 const ImSafeScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
+  const { name } = useUserData();
+
   return (
     <SafeAreaView style={styles.container}>
       <View
@@ -103,7 +106,7 @@ const ImSafeScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
               fontWeight: 'bold',
               fontSize: 15,
             }}>
-            @ userName
+            @{name}
           </Text>
         </View>
         <BoxedShare
