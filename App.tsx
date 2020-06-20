@@ -25,6 +25,7 @@ import ChooseScreen from './src/screens/ChooseScreen';
 import SignUpHomeScreen from './src/screens/SignUpHomeScreen';
 import SignUpFinScreen from './src/screens/SignUpFinScreen';
 import LoginScreen from './src/screens/LoginScreen';
+import HomeScreen from './src/screens/HomeScreen';
 
 YellowBox.ignoreWarnings([
   'Unrecognized WebSocket connection option(s) `agent`, `perMessageDeflate`, `pfx`, `key`, `passphrase`, `cert`, `ca`, `ciphers`, `rejectUnauthorized`. Did you mean to put these under `headers`?',
@@ -36,17 +37,23 @@ const LoginStack = createStackNavigator(
     SignUpInfo: SignUpInfoScreen,
     SignUpHome: SignUpHomeScreen,
     SignUpFin: SignUpFinScreen,
-    Login: LoginScreen,
-  },
-  {
-    headerMode: 'none',
-  },
-);
+    Login: LoginScreen
+}, {
+  headerMode: "none"
+});
+
+const HomeStack = createStackNavigator({
+  Home : HomeScreen,
+}, {
+  headerMode: "none"
+})
+
 
 const MainSwitch = createSwitchNavigator(
   {
     Loading: LoadingScreen,
     Login: LoginStack,
+    Home: HomeStack
   },
   {
     initialRouteName: 'Loading',
