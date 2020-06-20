@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Animated, Easing, View } from 'react-native';
 
-const COLOR_BLUEBERRY = '#6a429e';
+import palette from '../constants/palette';
 
 class Loading extends React.Component<{}> {
   AnimationLeft = new Animated.Value(1);
@@ -103,7 +103,7 @@ class Loading extends React.Component<{}> {
             width: 10,
             height: 10,
             borderRadius: 5,
-            backgroundColor: COLOR_BLUEBERRY,
+            backgroundColor: palette.COLOR_BLUEBERRY,
             opacity: 1,
             transform: [{ scale: this.AnimatedLeft }],
           }}
@@ -113,7 +113,7 @@ class Loading extends React.Component<{}> {
             width: 10,
             height: 10,
             borderRadius: 5,
-            backgroundColor: COLOR_BLUEBERRY,
+            backgroundColor: palette.COLOR_BLUEBERRY,
             opacity: 0.7,
             transform: [{ scale: this.AnimatedCenter }],
             marginLeft: 10,
@@ -124,7 +124,7 @@ class Loading extends React.Component<{}> {
             width: 10,
             height: 10,
             borderRadius: 5,
-            backgroundColor: COLOR_BLUEBERRY,
+            backgroundColor: palette.COLOR_BLUEBERRY,
             opacity: 0.5,
             transform: [{ scale: this.AnimatedRight }],
             marginLeft: 10,

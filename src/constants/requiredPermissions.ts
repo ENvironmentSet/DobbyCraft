@@ -1,6 +1,6 @@
 import { PERMISSIONS } from 'react-native-permissions';
 
-export default {
+const requiredPermissions = {
   macos: [],
   web: [],
   windows: [],
@@ -13,3 +13,5 @@ export default {
   ],
   ios: [PERMISSIONS.IOS.LOCATION_ALWAYS, PERMISSIONS.IOS.LOCATION_WHEN_IN_USE],
 };
+
+export default requiredPermissions;
