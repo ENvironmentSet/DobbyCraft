@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   TouchableWithoutFeedback,
   ViewStyle,
+  ImageBackground,
 } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
@@ -15,22 +16,27 @@ interface ChooseProps {
 
 const Choose: React.FC<ChooseProps> = ({ navigation }) => {
   return (
-    <View style={{ backgroundColor: 'red', flex: 1 }}>
-      <SafeAreaView style={styles.container}>
-        <View style={{ flex: 1 }} />
-        <TouchableWithoutFeedback onPress={() => navigation.navigate('Login')}>
-          <View style={styles.topButton}>
-            <Text style={{ color: '#333', fontSize: 14 }}>Sign In</Text>
-          </View>
-        </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback
-          onPress={() => navigation.navigate('SignUpInfo')}>
-          <View style={styles.bottomButton}>
-            <Text style={{ color: '#fff', fontSize: 14 }}>Join now !</Text>
-          </View>
-        </TouchableWithoutFeedback>
-      </SafeAreaView>
-    </View>
+    <ImageBackground
+      style={styles.backgroundImage}
+      source={{ uri: 'http://link.juneyoung.io/static/splash.png' }}>
+      <View style={{ flex: 1 }}>
+        <SafeAreaView style={styles.container}>
+          <View style={{ flex: 1 }} />
+          <TouchableWithoutFeedback
+            onPress={() => navigation.navigate('Login')}>
+            <View style={styles.topButton}>
+              <Text style={{ color: '#333', fontSize: 14 }}>Sign In</Text>
+            </View>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback
+            onPress={() => navigation.navigate('SignUpInfo')}>
+            <View style={styles.bottomButton}>
+              <Text style={{ color: '#fff', fontSize: 14 }}>Join now !</Text>
+            </View>
+          </TouchableWithoutFeedback>
+        </SafeAreaView>
+      </View>
+    </ImageBackground>
   );
 };
 
@@ -61,5 +67,10 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  backgroundImage: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
   },
 });
