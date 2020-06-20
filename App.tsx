@@ -1,17 +1,37 @@
-import NetInfo from '@react-native-community/netinfo';
-import { observer } from 'mobx-react';
-import React from 'react';
+import AsyncStorage from "@react-native-community/async-storage";
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import NetInfo from '@react-native-community/netinfo'
+import axios from "axios";
+import { observer, Provider } from "mobx-react";
+import React from "react";
 import {
-  Alert,
-  BackHandler,
-  NativeModules,
-  Platform,
-  Text,
-  View,
-  YellowBox,
-} from 'react-native';
-import Permissions from 'react-native-permissions';
-import { NavigationContainerComponent } from 'react-navigation';
+	Alert,
+	BackHandler,
+	NativeModules,
+	Platform,
+	StyleSheet,
+	View,
+	TouchableOpacity,
+	YellowBox,
+} from "react-native";
+import FastImage from "react-native-fast-image";
+import Permissions from "react-native-permissions";
+import {
+	createAppContainer,
+	createBottomTabNavigator,
+	createStackNavigator,
+	createSwitchNavigator,
+	NavigationActions,
+	NavigationContainerComponent,
+	NavigationScreenOptions,
+	NavigationScreenProp,
+} from "react-navigation";
+// import TabButton from "./src/components/TabButton";
+// import fonts from "./src/constants/fonts";
+
+// import stores from "./src/stores";
+
+let currentIndex: number = 0;
 
 export const { exitApp } = NativeModules;
 
@@ -54,13 +74,35 @@ class App extends React.Component<{}> {
     });
   };
 
-  render() {
-    return (
-      <View>
-        <Text>asdas</Text>
-      </View>
-    );
-  }
+	render() {
+		return (
+			<View style={styles.container}>
+     			<MapView
+       				provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+       				style={styles.map}
+       				region={{
+         				latitude: 37.78825,
+         				longitude: -122.4324,
+         				latitudeDelta: 0.015,
+         				longitudeDelta: 0.0121,
+       				}}
+     			/>
+  			 </View>
+		);
+	}
 }
+
+const styles = StyleSheet.create({
+	container: {
+	  ...StyleSheet.absoluteFillObject,
+	  height: 400,
+	  width: 400,
+	  justifyContent: 'flex-end',
+	  alignItems: 'center',
+	},
+	map: {
+	  ...StyleSheet.absoluteFillObject,
+	},
+   });
 
 export default App;
