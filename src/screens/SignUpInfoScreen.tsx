@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { SafeAreaView, Text, View, StyleSheet, ViewStyle } from 'react-native';
+import { SafeAreaView, View, StyleSheet, ViewStyle, Alert } from 'react-native';
 import Button from '../components/Button';
 import AuthHeader from '../components/AuthHeader';
-import BoxInput from '../components/LablledInput';
+import LabelledInput from '../components/LabelledInput';
 import AgreementPolicy from '../components/AgreementPolicy';
 import { NavigationScreenProp } from 'react-navigation';
 
@@ -12,6 +12,8 @@ interface SignUpInfoProps {
 
 const SignUpInfoScreen: React.FC<SignUpInfoProps> = ({ navigation }) => {
   const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmedPassword, setConfirmedPassword] = useState('');
   const [isActive, setIsActive] = useState(false);
 
   return (
@@ -19,23 +21,25 @@ const SignUpInfoScreen: React.FC<SignUpInfoProps> = ({ navigation }) => {
       <View style={styles.wrapper}>
         <AuthHeader headerText="Nice to meet you :-)" />
         <View style={{ flex: 3 }}>
-          <BoxInput
+          <LabelledInput
             label="username"
             placeholder="6 ~ 12 characters"
             value={userName}
             onInput={setUserName}
           />
-          <BoxInput
+          <LabelledInput
             label="password"
             placeholder="8 ~ 20 characters"
-            value={userName}
-            onInput={setUserName}
+            value={password}
+            onInput={setPassword}
+            secure
           />
-          <BoxInput
+          <LabelledInput
             label="confirm password"
             placeholder="confirm password"
-            value={userName}
-            onInput={setUserName}
+            value={confirmedPassword}
+            onInput={setConfirmedPassword}
+            secure
           />
           <AgreementPolicy
             isActive={isActive}
@@ -46,7 +50,31 @@ const SignUpInfoScreen: React.FC<SignUpInfoProps> = ({ navigation }) => {
       </View>
       <Button
         buttonLabel="NEXT"
-        onClickButton={() => navigation.navigate('SignUpHome')}
+        onClickButton={() => {
+          const testUserName = /[A-Za-z]\w{5,11}/;
+          const testPassword = /[A-Za-z]\w{7,19}/;
+
+          if (
+            testUserName.test(userName) &&
+            testPassword.test(password) &&
+            testPassword.test(confirmedPassword) &&
+            password === confirmedPassword &&
+            isActive
+          ) {
+            navigation.navigate('SignUpHome');
+          } else {
+            Alert.alert(
+              '알림',
+              '네모바지 스폰지밥~!~!~!🤪',
+              [
+                {
+                  text: '확인',
+                },
+              ],
+              { cancelable: false },
+            );
+          }
+        }}
       />
     </SafeAreaView>
   );
