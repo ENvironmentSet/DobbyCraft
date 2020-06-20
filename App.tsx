@@ -29,7 +29,7 @@ const MainSwitch = createSwitchNavigator(
     Home,
   },
   {
-    initialRouteName: 'Loading',
+    initialRouteName: 'Home',
   },
 );
 
