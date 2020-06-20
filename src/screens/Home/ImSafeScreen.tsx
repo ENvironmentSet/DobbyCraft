@@ -28,13 +28,14 @@ const ImSafeScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
     if (address === 'Nowhere') {
       Alert.alert(
         'Notification',
-        'You need to set your home to use this feature',
+        'You need to set your home to use this feature, will you?',
         [
           {
             text: 'Confirm',
+            onPress: () => console.log('go to home set page'),
           },
         ],
-        { cancelable: false },
+        { cancelable: true },
       );
     }
   }, [address]);

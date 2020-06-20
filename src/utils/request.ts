@@ -21,11 +21,11 @@ async function request<A>(
 
   if (result === 0) {
     Alert.alert(
-      '오류',
+      'Error',
       errorMessage,
       [
         {
-          text: '확인',
+          text: 'Confirm',
         },
       ],
       { cancelable: false },

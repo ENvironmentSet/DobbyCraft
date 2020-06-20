@@ -79,11 +79,11 @@ const SignUpInfo: React.FC<SignUpInfoProps> = ({ navigation }) => {
             }
           }
           Alert.alert(
-            '알림',
-            '네모바지 스폰지밥~!~!~!🤪',
+            'Error',
+            "You didn't satisfy the account create restriction",
             [
               {
-                text: '확인',
+                text: 'Confirm',
               },
             ],
             { cancelable: false },
