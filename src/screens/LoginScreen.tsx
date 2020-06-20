@@ -32,7 +32,7 @@ const LoginScreen: React.FC<LoginProps> = ({ navigation }) => {
           />
         </View>
       </View>
-      <Button buttonLabel="SIGN IN" onClickButton={() => console.log('ads')} />
+      <Button buttonLabel="SIGN IN" onClickButton={() => navigation.navigate("Home")} />
     </SafeAreaView>
   );
 };
