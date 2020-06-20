@@ -44,7 +44,10 @@ const SignUpInfoScreen: React.FC<SignUpInfoProps> = ({ navigation }) => {
           />
         </View>
       </View>
-      <Button buttonLabel="NEXT" onClickButton={() => navigation.navigate("SignUpHome")} />
+      <Button
+        buttonLabel="NEXT"
+        onClickButton={() => navigation.navigate('SignUpHome')}
+      />
     </SafeAreaView>
   );
 };

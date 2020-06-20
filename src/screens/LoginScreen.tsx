@@ -6,7 +6,7 @@ import AuthHeader from '../components/AuthHeader';
 import { NavigationScreenProp } from 'react-navigation';
 
 interface LoginProps {
-    navigation: NavigationScreenProp<{}>;
+  navigation: NavigationScreenProp<{}>;
 }
 
 const LoginScreen: React.FC<LoginProps> = ({ navigation }) => {

@@ -10,7 +10,7 @@ import {
 import { NavigationScreenProp } from 'react-navigation';
 
 interface ChooseProps {
-    navigation: NavigationScreenProp<{}>;
+  navigation: NavigationScreenProp<{}>;
 }
 
 const ChooseScreen: React.FC<ChooseProps> = ({ navigation }) => {
@@ -18,12 +18,13 @@ const ChooseScreen: React.FC<ChooseProps> = ({ navigation }) => {
     <View style={{ backgroundColor: 'red', flex: 1 }}>
       <SafeAreaView style={styles.container}>
         <View style={{ flex: 1 }} />
-        <TouchableWithoutFeedback onPress={() => navigation.navigate("Login")}>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate('Login')}>
           <View style={styles.topButton}>
             <Text style={{ color: '#333', fontSize: 14 }}>Sign In</Text>
           </View>
         </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => navigation.navigate("SignUpInfo")}>
+        <TouchableWithoutFeedback
+          onPress={() => navigation.navigate('SignUpInfo')}>
           <View style={styles.bottomButton}>
             <Text style={{ color: '#fff', fontSize: 14 }}>Join now !</Text>
           </View>
