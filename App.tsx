@@ -39,25 +39,29 @@ const LoginStack = createStackNavigator(
     SignUpInfo: SignUpInfoScreen,
     SignUpHome: SignUpHomeScreen,
     SignUpFin: SignUpFinScreen,
-    Login: LoginScreen
-}, {
-  headerMode: "none"
-});
+    Login: LoginScreen,
+  },
+  {
+    headerMode: 'none',
+  },
+);
 
-const HomeStack = createStackNavigator({
-  Home : HomeScreen,
-  HealthCheck : HealthCheckScreen,
-  HealthDetail : HealthDetailScreen
-}, {
-  headerMode: "none"
-})
-
+const HomeStack = createStackNavigator(
+  {
+    Home: HomeScreen,
+    HealthCheck: HealthCheckScreen,
+    HealthDetail: HealthDetailScreen,
+  },
+  {
+    headerMode: 'none',
+  },
+);
 
 const MainSwitch = createSwitchNavigator(
   {
     Loading: LoadingScreen,
     Login: LoginStack,
-    Home: HomeStack
+    Home: HomeStack,
   },
   {
     initialRouteName: 'Home',

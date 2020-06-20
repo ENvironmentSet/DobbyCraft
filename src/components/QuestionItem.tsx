@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableWithoutFeedback} from 'react-native';
+import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
 
 interface QuestionProps {
   obj: {
@@ -22,7 +22,9 @@ const QuestionItem: React.FC<QuestionProps> = ({ obj, onPress }) => {
             marginRight: 20,
           }}>
           <Text style={{ color: '#333', fontWeight: 'bold', fontSize: 25 }}>
-            {obj.title.length > 18 ? obj.title.slice(0, 18) + "..." : obj.title.slice(0, 18)}
+            {obj.title.length > 18
+              ? obj.title.slice(0, 18) + '...'
+              : obj.title.slice(0, 18)}
           </Text>
         </View>
         <View
@@ -33,7 +35,11 @@ const QuestionItem: React.FC<QuestionProps> = ({ obj, onPress }) => {
             marginLeft: 20,
             marginTop: 5,
           }}>
-          <Text style={{ color: '#333', fontSize: 15 }}>{obj.desc.length > 30 ? obj.desc.slice(0, 30) + "..." : obj.desc.slice(0, 30)}</Text>
+          <Text style={{ color: '#333', fontSize: 15 }}>
+            {obj.desc.length > 30
+              ? obj.desc.slice(0, 30) + '...'
+              : obj.desc.slice(0, 30)}
+          </Text>
         </View>
         <View
           style={{

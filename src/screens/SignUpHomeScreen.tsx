@@ -38,7 +38,7 @@ const SignUpHomeScreen: React.FC<SignUpHomeProps> = ({ navigation }) => {
           isShowSkip
           onClickSkipButton={onClickSkipButtonConfirm}
         />
-        <View style={{ flex: 3 }}></View>
+        <View style={{ flex: 3 }} />
       </View>
       <View style={styles.mapWrapper}>
         <MapView

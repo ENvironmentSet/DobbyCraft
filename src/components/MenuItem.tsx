@@ -1,5 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, SafeAreaView, View, TouchableWithoutFeedback } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  SafeAreaView,
+  View,
+  TouchableWithoutFeedback,
+} from 'react-native';
 
 interface MenuItemProps {
   obj: {
@@ -56,6 +62,6 @@ const styles = StyleSheet.create({
   IconWrapper: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'flex-end'
+    alignItems: 'flex-end',
   },
 });

@@ -1,42 +1,49 @@
 import React from 'react';
-import { StyleSheet, Text, ViewStyle, View, SafeAreaView, FlatList } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  ViewStyle,
+  View,
+  SafeAreaView,
+  FlatList,
+} from 'react-native';
 import MenuItem from '../components/MenuItem';
 import SnsLastFeed from '../components/SnsLastFeed';
 //@ts-ignore
-import { SliderBox } from "react-native-image-slider-box";
+import { SliderBox } from 'react-native-image-slider-box';
 import { NavigationScreenProp } from 'react-navigation';
 const BottomData = [
-    {
-        title: "Guidelines",
-        screen: "Guideline",
-        imoge: '📋'
-    },
-    {
-        title: "I'm Safe!",
-        screen: "Safe",
-        imoge: '🙆‍♀️'
-    },
-    {
-        title: "Safe\nBuildings",
-        screen: "SafeBuliding",
-        imoge: '🏢'
-    },
-    {   
-        title: "Health\nCheck",
-        screen: "HealthCheck",
-        imoge: '👨‍⚕️'
-    }
-]
+  {
+    title: 'Guidelines',
+    screen: 'Guideline',
+    imoge: '📋',
+  },
+  {
+    title: "I'm Safe!",
+    screen: 'Safe',
+    imoge: '🙆‍♀️',
+  },
+  {
+    title: 'Safe\nBuildings',
+    screen: 'SafeBuliding',
+    imoge: '🏢',
+  },
+  {
+    title: 'Health\nCheck',
+    screen: 'HealthCheck',
+    imoge: '👨‍⚕️',
+  },
+];
 
 const Images = [
-    "https://source.unsplash.com/1024x768/?nature",
-    "https://source.unsplash.com/1024x768/?water",
-    "https://source.unsplash.com/1024x768/?girl",
-    "https://source.unsplash.com/1024x768/?tree"
-]
+  'https://source.unsplash.com/1024x768/?nature',
+  'https://source.unsplash.com/1024x768/?water',
+  'https://source.unsplash.com/1024x768/?girl',
+  'https://source.unsplash.com/1024x768/?tree',
+];
 
 interface HomeProps {
-  navigation : NavigationScreenProp<{}>
+  navigation: NavigationScreenProp<{}>;
 }
 
 const HomeScreen: React.FC<HomeProps> = ({ navigation }) => {
@@ -47,17 +54,21 @@ const HomeScreen: React.FC<HomeProps> = ({ navigation }) => {
         <Text style={styles.header}>Stay Safe!</Text>
         <Text style={styles.desc}>Latest News</Text>
         <SnsLastFeed />
-        <View style={{ position: 'absolute', top : 250, left: -30}}>
-        <SliderBox
-          images={Images}
-        />
+        <View style={{ position: 'absolute', top: 250, left: -30 }}>
+          <SliderBox images={Images} />
         </View>
       </View>
       <View style={styles.bottomDivision}>
         <FlatList
           data={BottomData}
           renderItem={({ item }) => {
-            return <MenuItem obj={item} key="item-new" onPress={() => navigation.navigate(item.screen)}/>
+            return (
+              <MenuItem
+                obj={item}
+                key="item-new"
+                onPress={() => navigation.navigate(item.screen)}
+              />
+            );
           }}
           numColumns={2}
           keyExtractor={(item, index) => index.toString()}
@@ -89,21 +100,20 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   Date: {
-      marginTop: 20,
-      fontSize: 15,
-      color: 'rgba(0, 0, 0, 0.394871)',
-      fontWeight: 'bold'
+    marginTop: 20,
+    fontSize: 15,
+    color: 'rgba(0, 0, 0, 0.394871)',
+    fontWeight: 'bold',
   },
-  header : {
-      marginTop: 7,
-      fontSize: 30,
-      color: '#000',
-      fontWeight: 'bold'
+  header: {
+    marginTop: 7,
+    fontSize: 30,
+    color: '#000',
+    fontWeight: 'bold',
   },
-  desc : {
+  desc: {
     fontSize: 22,
     fontWeight: 'bold',
-    marginTop: 15
-  }
-
+    marginTop: 15,
+  },
 });
