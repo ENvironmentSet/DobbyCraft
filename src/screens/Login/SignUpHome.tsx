@@ -17,13 +17,18 @@ interface SignUpHomeProps {
 const SignUpHome: React.FC<SignUpHomeProps> = ({ navigation }) => {
   useEffect(() => {
     Geolocation.getCurrentPosition(async info => {
-      setLatitude(info.coords.latitude)
-      setLongitude(info.coords.longitude)
-      let response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${info.coords.latitude},${info.coords.longitude}&key=AIzaSyApHwjvMnawrDV2x0u3dHSw0rpdR1w0rAU&language=en`);
+      setLatitude(info.coords.latitude);
+      setLongitude(info.coords.longitude);
+      let response = await fetch(
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${info.coords.latitude},${info.coords.longitude}&key=AIzaSyApHwjvMnawrDV2x0u3dHSw0rpdR1w0rAU&language=en`,
+      );
 
-      if (response.ok) { // HTTP 상태 코드가 200~299일 경우
+      if (response.ok) {
+        // HTTP 상태 코드가 200~299일 경우
         // 응답 몬문을 받습니다(관련 메서드는 아래에서 설명).
-        let { results: [{ address_components, formatted_address }]} = await response.json();
+        let {
+          results: [{ address_components, formatted_address }],
+        } = await response.json();
         setUserAddr(
           address_components.find(({ types }: { types: string[] }) =>
             types.includes('political'),
@@ -31,11 +36,9 @@ const SignUpHome: React.FC<SignUpHomeProps> = ({ navigation }) => {
         );
         setUserFullAddr(formatted_address);
       } else {
-
       }
     });
-  }, [])
-
+  }, []);
 
   const setUserData = useUserDataUpdater();
   const { name, password } = useUserData();

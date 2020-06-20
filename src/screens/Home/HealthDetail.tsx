@@ -34,7 +34,13 @@ const HealthDetail: React.FC<HealthDetailProps> = ({ navigation }) => {
         </TouchableWithoutFeedback>
       </View>
       <View style={{ flex: 10, width: '100%' }}>
-        <Text style={{ marginRight: 'auto', fontSize: 30, fontWeight: 'bold', marginBottom: 20 }}>
+        <Text
+          style={{
+            marginRight: 'auto',
+            fontSize: 30,
+            fontWeight: 'bold',
+            marginBottom: 20,
+          }}>
           {navigation.getParam('title')}
         </Text>
         <ScrollView>

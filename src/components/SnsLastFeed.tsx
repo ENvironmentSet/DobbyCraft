@@ -11,7 +11,8 @@ const SnsLastFeed: React.FC = () => {
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <View style={{ width: 30, height: 30, backgroundColor: '#000' }} />
         <Text style={{ marginLeft: 17, fontWeight: 'bold' }}>{name}</Text>
-        <TouchableWithoutFeedback onPress={() => Linking.openURL('https://m.naver.com')}>
+        <TouchableWithoutFeedback
+          onPress={() => Linking.openURL('https://m.naver.com')}>
           <Text
             style={{ marginLeft: 10, fontWeight: 'bold', color: '#007AFF' }}>
             @ snsService, time ago

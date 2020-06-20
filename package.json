@@ -15,6 +15,7 @@
     "@react-native-community/async-storage": "^1.11.0",
     "@react-native-community/geolocation": "^2.0.2",
     "@react-native-community/netinfo": "^5.9.3",
+    "moment": "^2.27.0",
     "react": "16.11.0",
     "react-native": "0.62.2",
     "react-native-fast-image": "^8.1.5",
