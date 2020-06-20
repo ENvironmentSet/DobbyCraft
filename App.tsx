@@ -1,6 +1,6 @@
 import NetInfo from '@react-native-community/netinfo';
 import { observer, Provider } from 'mobx-react';
-import React from 'react';
+import * as React from 'react';
 import {
   Alert,
   BackHandler,
