@@ -7,11 +7,12 @@ interface MenuItemProps {
     title: string;
     imoge: string;
   };
+  onPress: () => void;
 }
 
-const MenuItem: React.FC<MenuItemProps> = ({ obj }) => {
+const MenuItem: React.FC<MenuItemProps> = ({ obj, onPress }) => {
   return (
-    <TouchableWithoutFeedback>
+    <TouchableWithoutFeedback onPress={onPress}>
       <SafeAreaView style={styles.container}>
         <View style={styles.TextWrapper}>
           <Text style={{ fontSize: 18, color: '#000', fontWeight: 'bold' }}>

@@ -4,7 +4,7 @@ import MenuItem from '../components/MenuItem';
 import SnsLastFeed from '../components/SnsLastFeed';
 //@ts-ignore
 import { SliderBox } from "react-native-image-slider-box";
-
+import { NavigationScreenProp } from 'react-navigation';
 const BottomData = [
     {
         title: "Guidelines",
@@ -35,7 +35,11 @@ const Images = [
     "https://source.unsplash.com/1024x768/?tree"
 ]
 
-const HomeScreen: React.FC = () => {
+interface HomeProps {
+  navigation : NavigationScreenProp<{}>
+}
+
+const HomeScreen: React.FC<HomeProps> = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.topDivision}>
@@ -53,7 +57,7 @@ const HomeScreen: React.FC = () => {
         <FlatList
           data={BottomData}
           renderItem={({ item }) => {
-            return <MenuItem obj={item} key="item-new"/>
+            return <MenuItem obj={item} key="item-new" onPress={() => navigation.navigate(item.screen)}/>
           }}
           numColumns={2}
           keyExtractor={(item, index) => index.toString()}
