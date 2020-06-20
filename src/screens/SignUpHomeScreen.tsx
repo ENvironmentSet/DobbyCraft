@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, ViewStyle, View, SafeAreaView, Alert } from 'react-native';
 import AuthHeader from '../components/AuthHeader';
 import Button from '../components/Button';
 import { NavigationScreenProp } from 'react-navigation';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+
+const marker = require('../assets/marker.png');
 
 interface SignUpHomeProps {
   navigation: NavigationScreenProp<{}>;
 }
 
 const SignUpHomeScreen: React.FC<SignUpHomeProps> = ({ navigation }) => {
+  const [latitude, setLatitude] = useState(37.5030415);
+  const [longitude, setLongitude] = useState(126.946423);
+  const [latitudeDelta, setLatitudeDelta] = useState(0.001);
+  const [longitudeDelta, setLongitudeDelta] = useState(0.001);
   const onClickSkipButtonConfirm = () =>
     Alert.alert(
       'Are you sure?',
@@ -39,12 +45,28 @@ const SignUpHomeScreen: React.FC<SignUpHomeProps> = ({ navigation }) => {
           provider={PROVIDER_GOOGLE} // remove if not using Google Maps
           style={styles.map}
           region={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-            latitudeDelta: 0.015,
-            longitudeDelta: 0.0121,
+            latitude,
+            longitude,
+            latitudeDelta,
+            longitudeDelta,
           }}
-        />
+          onRegionChangeComplete={({
+            latitude,
+            longitude,
+            latitudeDelta,
+            longitudeDelta,
+          }) => {
+            setLatitude(latitude);
+            setLongitude(longitude);
+            setLatitudeDelta(latitudeDelta);
+            setLongitudeDelta(longitudeDelta);
+          }}>
+          <Marker
+            title={'Locate your home!'}
+            image={marker}
+            coordinate={{ latitude, longitude }}
+          />
+        </MapView>
       </View>
       <View style={{ width: '100%', paddingHorizontal: 30 }}>
         <Button
