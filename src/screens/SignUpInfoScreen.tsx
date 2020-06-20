@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { SafeAreaView, Text, View, StyleSheet, ViewStyle } from 'react-native';
 import Button from '../components/Button';
 import AuthHeader from '../components/AuthHeader';
-import BoxInput from '../components/BoxInput';
+import BoxInput from '../components/LablledInput';
 import AgreementPolicy from '../components/AgreementPolicy';
 
 const SignUpInfoScreen: React.FC = () => {
@@ -18,23 +18,23 @@ const SignUpInfoScreen: React.FC = () => {
             label="username"
             placeholder="6 ~ 12 characters"
             value={userName}
-            onChangeAction={(text: string) => setUserName(text)}
+            onInput={(text: string) => setUserName(text)}
           />
           <BoxInput
             label="password"
             placeholder="8 ~ 20 characters"
             value={userName}
-            onChangeAction={(text: string) => setUserName(text)}
+            onInput={(text: string) => setUserName(text)}
           />
           <BoxInput
             label="re-password"
             placeholder="retype password"
             value={userName}
-            onChangeAction={(text: string) => setUserName(text)}
+            onInput={(text: string) => setUserName(text)}
           />
           <AgreementPolicy
             isActive={isActive}
-            changeIsActive={(value: boolean) => setIsActive(value)}
+            onActivationChange={(value: boolean) => setIsActive(value)}
             label="I agree to the Service Agreement"
           />
         </View>

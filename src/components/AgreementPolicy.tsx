@@ -7,23 +7,19 @@ const AfterIcon = require('../assets/after.png');
 interface AgreementPolicyProps {
   label: string;
   isActive: boolean;
-  changeIsActive: (value: boolean) => void;
+  onActivationChange: (value: boolean) => void;
 }
 
 const AgreementPolicy: React.FC<AgreementPolicyProps> = ({
   label,
   isActive,
-  changeIsActive,
+  onActivationChange,
 }) => {
   return (
-    <TouchableWithoutFeedback onPress={() => changeIsActive(!isActive)}>
+    <TouchableWithoutFeedback onPress={() => onActivationChange(!isActive)}>
       <View style={styles.wrapper}>
         <View style={styles.checkBox}>
-          {isActive ? (
-            <FastImage source={AfterIcon} style={{ width: 24, height: 24 }} />
-          ) : (
-            <FastImage source={BeforeIcon} style={{ width: 24, height: 24 }} />
-          )}
+          <FastImage source={isActive ? AfterIcon : BeforeIcon } style={{ width: 24, height: 24 }} />
         </View>
         <Text style={styles.label}>{label}</Text>
       </View>
@@ -38,7 +34,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
   wrapper: {
     flexDirection: 'row',
     alignItems: 'center',

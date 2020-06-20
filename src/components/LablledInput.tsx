@@ -4,14 +4,14 @@ import { Text, View, TextInput, StyleSheet } from 'react-native';
 interface BoxInputProps {
   label: string;
   placeholder: string;
-  onChangeAction: (text: string) => void;
+  onInput: (text: string) => void;
   value: string;
 }
 
-const BoxInput: React.FC<BoxInputProps> = ({
+const LablledInput: React.FC<BoxInputProps> = ({
   label,
   placeholder,
-  onChangeAction,
+  onInput,
   value,
 }) => {
   return (
@@ -20,7 +20,7 @@ const BoxInput: React.FC<BoxInputProps> = ({
       <TextInput
         style={styles.input}
         value={value}
-        onChangeText={text => onChangeAction(text)}
+        onChangeText={text => onInput(text)}
         placeholder={placeholder}
       />
     </View>
@@ -43,4 +43,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BoxInput;
+export default LablledInput;
