@@ -10,6 +10,7 @@ import {
 import { NavigationScreenProp } from 'react-navigation';
 import FastImage from 'react-native-fast-image';
 import LinearGradient from 'react-native-linear-gradient';
+import BoxedShare from '../../components/SharedBox';
 
 const BackIcn = require('../../assets/back.png');
 
@@ -105,6 +106,17 @@ const ImSafeScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
             @ userName
           </Text>
         </View>
+        <BoxedShare
+          WhatsappMessage="https://www.hackjunction.com/concepts/junction"
+          FacebookShareURL="https://www.hackjunction.com/concepts/junction"
+          FacebookShareMessage="I have been at home fo (num) hours , (num) minutes (STRING) -By SafeMe Application"
+          TwitterShareURL="https://www.hackjunction.com/concepts/junction"
+          TwitterShareMessage="I have been at home fo (num) hours , (num) minutes (STRING) -By SafeMe Application"
+          TwitterViaAccount="NvironmentE"
+          NativeShareTitle="SafeMe Application Shared"
+          NativeShareMessage="I have been at home fo (num) hours , (num) minutes (STRING) -By SafeMe Application"
+          NativeShareURL="https://www.hackjunction.com/concepts/junction"
+        />
       </View>
     </SafeAreaView>
   );
