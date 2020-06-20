@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   ViewStyle,
+  Text,
   View,
+  TouchableOpacity,
   TouchableWithoutFeedback,
 } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import FastImage from 'react-native-fast-image';
 import { NavigationScreenProp } from 'react-navigation';
+import Geolocation from '@react-native-community/geolocation';
+import { getWidth, getHeight } from '../../constants/size';
+import Modal from 'react-native-modal';
+import Button from '../../components/Button';
+import { ScrollView } from 'react-native-gesture-handler';
+import AgreementPolicy from '../../components/AgreementPolicy';
 
 const CloseIcn = require('../../assets/x.png');
 
@@ -16,6 +24,25 @@ interface SafeBuildingProps {
 }
 
 const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
+
+  useEffect(() => {
+    Geolocation.getCurrentPosition(async info => {
+      setLatitude(info.coords.latitude)
+      setLongitude(info.coords.longitude)
+    });
+  }, [])
+
+
+  const hideModal = () => {
+    setIsSeen(false)
+    setIsLongSeen(true)
+  };
+
+  const [latitude, setLatitude] = useState(37.5030415);
+  const [longitude, setLongitude] = useState(126.946423);
+  const [isSeen, setIsSeen] = useState(false);
+  const [isLongSeen, setIsLongSeen] = useState(false);
+  const [multiActive, setMultiActive] = useState("")
   return (
     <View style={styles.mapWrapper}>
       <View
@@ -31,14 +58,136 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
           paddingRight: 20,
           paddingTop: 20,
         }}>
-        <TouchableWithoutFeedback onPress={() => navigation.navigate('Home')}>
+        <TouchableWithoutFeedback onPress={() => isLongSeen ? setIsLongSeen(false) : setIsSeen(true)}>
           <FastImage source={CloseIcn} style={{ width: 25, height: 25 }} />
         </TouchableWithoutFeedback>
       </View>
       <MapView
         provider={PROVIDER_GOOGLE} // remove if not using Google Maps
         style={styles.map}
+        region={{
+          latitude,
+          longitude,
+          latitudeDelta : 0.001,
+          longitudeDelta : 0.001,
+        }}
       />
+       <Modal
+          isVisible={isSeen}
+          swipeDirection={['up', 'left', 'right', 'down']}
+          onBackdropPress={() => {
+            hideModal();
+          }}
+          onBackButtonPress={() => {
+            hideModal();
+          }}
+          style={{
+            justifyContent: 'flex-end',
+            margin: 0,
+          }}>
+          <View
+            style={{
+              height: getWidth(348),
+              backgroundColor: '#fff',
+              paddingTop: getWidth(32),
+              paddingHorizontal: getWidth(20),
+              borderTopLeftRadius: 14,
+              borderTopRightRadius: 14,
+            }}>
+            <Text style={{ fontSize: 30, fontWeight: 'bold', }}>
+              Building Name
+            </Text>
+            <Text style={{ fontSize: 18, marginTop: 20 }}>
+              this... is... sub address
+            </Text>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'center',
+                flex: 1
+              }}>
+              <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+                <Text style={{ fontSize: 20, fontWeight: 'bold'}}>Safety Level</Text>
+                <Text style={{ fontSize: 60, fontWeight: 'bold', marginVertical: 10}}>4.8</Text>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'rgba(51, 51, 51, 0.7)' }}>out of 5</Text>
+              </View>
+              <View style={{ flex: 1}}>
+                <View style={{ flexDirection: 'row', alignItems: 'flex-end', flex: 1 }}>
+                  <FastImage source={require("../../assets/before.png")} style={{  width: 24, height: 24 }}/>
+                  <Text style={{ marginLeft: 20, fontSize: 15, fontWeight: 'bold'}}>Thermal Device</Text>
+                </View>
+                <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1 }}>
+                  <FastImage source={require("../../assets/before.png")} style={{  width: 24, height: 24 }}/>
+                  <Text style={{ marginLeft: 20, fontSize: 15, fontWeight: 'bold'}}>Mask Required</Text>
+                </View>
+                <View style={{ flexDirection: 'row', alignItems: 'flex-start', flex: 1, justifyContent: 'flex-start' }}>
+                  <FastImage source={require("../../assets/before.png")} style={{  width: 24, height: 24 }}/>
+                  <Text style={{ marginLeft: 20, fontSize: 15, fontWeight: 'bold'}}>Regular disinfection</Text>
+                </View>
+              </View>
+            </View>
+            <View style={{ marginBottom: 40 }}>
+              <Button buttonLabel="REVIEW HERE" onClickButton={() => {
+                hideModal()
+              }} />
+            </View>
+          </View>
+        </Modal>
+    {isLongSeen && <View style={{ width: '100%', height: '96%', backgroundColor: '#fff', marginTop: 'auto', borderTopLeftRadius: 13, borderTopRightRadius: 13 }}>
+            <Text style={{ fontSize: 30, fontWeight: 'bold', marginTop: 80, marginHorizontal: 30 }}>
+            Start your review
+            </Text>
+            <Text style={{ fontSize: 30, fontWeight: 'bold', marginTop: 40, marginHorizontal: 30 }}>
+              Building Name
+            </Text>
+            <Text style={{ fontSize: 18, marginTop: 20, marginHorizontal: 30 }}>
+              this... is... sub address
+            </Text>
+            <View style={{ flex: 1, marginHorizontal: 30, marginTop: 50 }}>
+              <ScrollView>
+                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>1. Are the elevator buttons in the building covered with antibacterial film?</Text>
+                <AgreementPolicy label="Yes"/>
+                <AgreementPolicy label="No"/>
+                <AgreementPolicy label="Not Applicable"/>
+                <AgreementPolicy label="Unable to know"/>
+                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>2. Is the sanitizer placed all over the building?</Text>
+                <AgreementPolicy label="Yes"/>
+                <AgreementPolicy label="No"/>
+                <AgreementPolicy label="Not Applicable"/>
+                <AgreementPolicy label="Unable to know"/>
+                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>3. Does disinfection run or a regular?</Text>
+                <AgreementPolicy label="Yes"/>
+                <AgreementPolicy label="No"/>
+                <AgreementPolicy label="Not Applicable"/>
+                <AgreementPolicy label="Unable to know"/>
+                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>4. Is the thermal sensing camera is at the entrance to the building?</Text>
+                <AgreementPolicy label="Yes"/>
+                <AgreementPolicy label="No"/>
+                <AgreementPolicy label="Not Applicable"/>
+                <AgreementPolicy label="Unable to know"/>
+                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>5. Is the clinical thermometer is at the entrance to the building?</Text>
+                <AgreementPolicy label="Yes"/>
+                <AgreementPolicy label="No"/>
+                <AgreementPolicy label="Not Applicable"/>
+                <AgreementPolicy label="Unable to know"/>
+                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>6. Do Most People wear masks ?</Text>
+                <AgreementPolicy label="Yes"/>
+                <AgreementPolicy label="No"/>
+                <AgreementPolicy label="Not Applicable"/>
+                <AgreementPolicy label="Unable to know"/>
+                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>7. Let us know if anything to add or comment on? (optional)</Text>
+                <AgreementPolicy label="Yes"/>
+                <AgreementPolicy label="No"/>
+                <AgreementPolicy label="Not Applicable"/>
+                <AgreementPolicy label="Unable to know"/>
+              </ScrollView>
+            </View>
+            <View style={{ marginBottom: 40, marginHorizontal: 30 }}>
+              <Button buttonLabel="SUBMIT" onClickButton={() => {
+                setIsLongSeen(false)
+              }} />
+            </View>
+      </View>}
     </View>
   );
 };
