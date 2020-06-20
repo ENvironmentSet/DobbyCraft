@@ -4,8 +4,13 @@ import Button from '../components/Button';
 import AuthHeader from '../components/AuthHeader';
 import BoxInput from '../components/LablledInput';
 import AgreementPolicy from '../components/AgreementPolicy';
+import { NavigationScreenProp } from 'react-navigation';
 
-const SignUpInfoScreen: React.FC = () => {
+interface SignUpInfoProps {
+  navigation: NavigationScreenProp<{}>;
+}
+
+const SignUpInfoScreen: React.FC<SignUpInfoProps> = ({ navigation }) => {
   const [userName, setUserName] = useState('');
   const [isActive, setIsActive] = useState(false);
 
@@ -39,7 +44,7 @@ const SignUpInfoScreen: React.FC = () => {
           />
         </View>
       </View>
-      <Button buttonLabel="NEXT" onClickButton={() => console.log('ass')} />
+      <Button buttonLabel="NEXT" onClickButton={() => navigation.navigate("SignUpHome")} />
     </SafeAreaView>
   );
 };
