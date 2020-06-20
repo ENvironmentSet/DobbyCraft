@@ -47,7 +47,7 @@ const HealthCheck: React.FC<HealthCheckProps> = ({ navigation }) => {
         </TouchableWithoutFeedback>
       </View>
       <View style={{ flex: 10, width: '100%' }}>
-        <Text style={{ marginRight: 'auto', fontSize: 30, fontWeight: 'bold' }}>
+        <Text style={{ marginRight: 'auto', fontSize: 30, fontWeight: 'bold', marginBottom: 20 }}>
           Health Check
         </Text>
         <FlatList

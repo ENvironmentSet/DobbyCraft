@@ -5,6 +5,7 @@ import {
   View,
   SafeAreaView,
   ViewStyle,
+  ScrollView,
   TouchableWithoutFeedback,
 } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
@@ -33,12 +34,14 @@ const HealthDetail: React.FC<HealthDetailProps> = ({ navigation }) => {
         </TouchableWithoutFeedback>
       </View>
       <View style={{ flex: 10, width: '100%' }}>
-        <Text style={{ marginRight: 'auto', fontSize: 30, fontWeight: 'bold' }}>
+        <Text style={{ marginRight: 'auto', fontSize: 30, fontWeight: 'bold', marginBottom: 20 }}>
           {navigation.getParam('title')}
         </Text>
-        <Text style={{ color: '#333', fontSize: 15, marginTop: 20 }}>
-          {navigation.getParam('desc')}
-        </Text>
+        <ScrollView>
+          <Text style={{ color: '#333', fontSize: 15, marginTop: 20 }}>
+            {navigation.getParam('desc')}
+          </Text>
+        </ScrollView>
       </View>
     </SafeAreaView>
   );

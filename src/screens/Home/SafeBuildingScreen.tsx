@@ -27,7 +27,7 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
           justifyContent: 'flex-end',
           position: 'absolute',
           zIndex: 999,
-          height: 100,
+          height: 110,
           paddingRight: 20,
           paddingTop: 20,
         }}>

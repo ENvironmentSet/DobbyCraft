@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Linking } from 'react-native';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const SnsLastFeed: React.FC = () => {
   return (
@@ -7,9 +8,12 @@ const SnsLastFeed: React.FC = () => {
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <View style={{ width: 30, height: 30, backgroundColor: '#000' }} />
         <Text style={{ marginLeft: 17, fontWeight: 'bold' }}>userIdFeed</Text>
-        <Text style={{ marginLeft: 10, fontWeight: 'bold', color: '#007AFF' }}>
-          @ snsService, time ago
-        </Text>
+        <TouchableWithoutFeedback onPress={() => Linking.openURL('https://m.naver.com')}>
+          <Text
+            style={{ marginLeft: 10, fontWeight: 'bold', color: '#007AFF' }}>
+            @ snsService, time ago
+          </Text>
+        </TouchableWithoutFeedback>
       </View>
       <View style={{ marginTop: 10 }}>
         <Text>
