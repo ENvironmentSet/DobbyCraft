@@ -40,21 +40,27 @@ const BottomData = [
   },
 ];
 
-const Images = [
-  'https://source.unsplash.com/1024x768/?nature',
-  'https://source.unsplash.com/1024x768/?water',
-  'https://source.unsplash.com/1024x768/?girl',
-  'https://source.unsplash.com/1024x768/?tree',
-];
-
 interface HomeProps {
   navigation: NavigationScreenProp<{}>;
 }
 
+interface Feed {
+  author: string;
+  title: string;
+  link: string;
+  linkText: string;
+}
+
 const Home: React.FC<HomeProps> = ({ navigation }) => {
   const { home } = useUserData();
-  const [images, setImages] = useState([]);
-  const [feed, setFeed] = useState({});
+  const [images, setImages] = useState<string[]>([]);
+  const [feed, setFeed] = useState<Feed>({
+    author: 'loading...',
+    title: 'loading...',
+    link: 'loading...',
+    linkText: 'loading',
+  });
+
   useEffect(() => {
     if (home !== undefined) {
       const { latitude, longitude } = home;
@@ -65,18 +71,23 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
       });
       return stopStayTimer;
     }
+  }, [home]);
 
+  useEffect(() => {
     const load = async () => {
-      await request<{ result: 0 | 1 }>('home', {
+      const { banner, latestNews } = await request<{
+        banner: string[];
+        latestNews: Feed;
+      }>('home', {
         method: 'GET',
-      }).then(res => {
-        setImages(res.banner);
-        setFeed(res.latestNews);
       });
+
+      setImages(banner);
+      setFeed(latestNews);
     };
 
     load();
-  }, [home]);
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -84,7 +95,7 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
         <Text style={styles.Date}>{moment().format('dddd DD MMMM')}</Text>
         <Text style={styles.header}>Stay Safe!</Text>
         <Text style={styles.desc}>Latest News</Text>
-        <SnsLastFeed feed={feed} />
+          <SnsLastFeed feed={feed} />
         <View style={{ position: 'absolute', top: 250, left: -30 }}>
           <SliderBox images={images} />
         </View>
