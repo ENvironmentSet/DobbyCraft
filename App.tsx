@@ -1,24 +1,30 @@
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import NetInfo from '@react-native-community/netinfo';
-import { observer } from 'mobx-react';
+import { observer, Provider } from 'mobx-react';
 import React from 'react';
 import {
   Alert,
   BackHandler,
   NativeModules,
   Platform,
-  StyleSheet,
-  View,
   YellowBox,
 } from 'react-native';
-import Permissions from 'react-native-permissions';
-import { NavigationContainerComponent } from 'react-navigation';
+import { PERMISSIONS, request } from 'react-native-permissions';
+import {
+  createAppContainer,
+  createSwitchNavigator,
+  NavigationContainerComponent,
+} from 'react-navigation';
+
+import stores from './src/store';
+import LoadingScreen from './src/screens/LoadingScreen';
 
 export const { exitApp } = NativeModules;
 
 YellowBox.ignoreWarnings([
   'Unrecognized WebSocket connection option(s) `agent`, `perMessageDeflate`, `pfx`, `key`, `passphrase`, `cert`, `ca`, `ciphers`, `rejectUnauthorized`. Did you mean to put these under `headers`?',
 ]);
+
+let currentIndex: number = 0;
 
 @observer
 class App extends React.Component<{}> {
@@ -29,8 +35,16 @@ class App extends React.Component<{}> {
   navigation = React.createRef<NavigationContainerComponent>();
 
   componentDidMount = async () => {
-    if (Platform.OS === 'android')
-      await Permissions.request('storage', { type: 'always' });
+    if (Platform.OS === 'android') {
+      await request(PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE);
+      await request(PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE);
+      await request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
+      await request(PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION);
+      await request(PERMISSIONS.ANDROID.ACCESS_COARSE_LOCATION);
+    } else {
+      await request(PERMISSIONS.IOS.LOCATION_ALWAYS);
+      await request(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE);
+    }
 
     NetInfo.fetch().then(state => {
       !state.isConnected &&
@@ -56,33 +70,27 @@ class App extends React.Component<{}> {
 
   render() {
     return (
-      <View style={styles.container}>
-        <MapView
-          provider={PROVIDER_GOOGLE}
-          style={styles.map}
-          region={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-            latitudeDelta: 0.015,
-            longitudeDelta: 0.0121,
+      <Provider {...stores}>
+        <AppContainer
+          ref={this.navigation}
+          onNavigationStateChange={(_prev, next) => {
+            currentIndex = next.index;
           }}
         />
-      </View>
+      </Provider>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    ...StyleSheet.absoluteFillObject,
-    height: 400,
-    width: 400,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
+const MainSwitch = createSwitchNavigator(
+  {
+    Loading: LoadingScreen,
   },
-  map: {
-    ...StyleSheet.absoluteFillObject,
+  {
+    initialRouteName: 'Loading',
   },
-});
+);
+
+const AppContainer = createAppContainer(MainSwitch);
 
 export default App;
