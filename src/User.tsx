@@ -7,28 +7,21 @@ import React, {
 } from 'react';
 
 export interface User {
-  name: string;
-  home: {
+  name?: string;
+  password?: string;
+  home?: {
     address: string;
     latitude: string;
     longitude: string;
   };
+  token?: string;
 }
-
-const diverseUser = {
-  get name(): string {
-    throw new Error('Oh, No!');
-  },
-  get home(): User['home'] {
-    throw new Error('Oh, No!');
-  },
-};
 
 const userContext = React.createContext<{
   user: User;
   updateData(updatedPart: Partial<User>): void;
 }>({
-  user: diverseUser,
+  user: {},
   updateData() {},
 });
 
@@ -40,7 +33,9 @@ export function ProvideUserData({
   children: React.ReactChild;
 }) {
   const [name, setName] = useState<User['name']>();
+  const [password, setPassword] = useState<User['password']>();
   const [home, setHome] = useState<User['home']>();
+  const [token, setToken] = useState<User['token']>();
   const updateData = useCallback(updatedPart => {
     if ('name' in updatedPart) {
       setName(updatedPart.name);
@@ -48,10 +43,18 @@ export function ProvideUserData({
     if ('home' in updatedPart) {
       setHome(updatedPart.home);
     }
+    if ('token' in updatedPart) {
+      setToken(updatedPart.token);
+    }
+    if ('password' in updatedPart) {
+      setPassword(updatedPart.password);
+    }
   }, []);
-  const user = useMemo(() => (name && home ? { name, home } : diverseUser), [
+  const user = useMemo(() => ({ name, home, token, password }), [
     name,
     home,
+    token,
+    password,
   ]);
 
   useEffect(() => onChange(user), [onChange, user]);

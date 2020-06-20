@@ -5,12 +5,15 @@ import AuthHeader from '../../components/AuthHeader';
 import LabelledInput from '../../components/LabelledInput';
 import AgreementPolicy from '../../components/AgreementPolicy';
 import { NavigationScreenProp } from 'react-navigation';
+import { useUserDataUpdater } from '../../User';
+import request from '../../utils/request';
 
 interface SignUpInfoProps {
   navigation: NavigationScreenProp<{}>;
 }
 
 const SignUpInfo: React.FC<SignUpInfoProps> = ({ navigation }) => {
+  const setUserData = useUserDataUpdater();
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmedPassword, setConfirmedPassword] = useState('');
@@ -50,7 +53,7 @@ const SignUpInfo: React.FC<SignUpInfoProps> = ({ navigation }) => {
       </View>
       <Button
         buttonLabel="NEXT"
-        onClickButton={() => {
+        onClickButton={async () => {
           const testUserName = /[A-Za-z]\w{5,11}/;
           const testPassword = /[A-Za-z]\w{7,19}/;
 
@@ -61,19 +64,30 @@ const SignUpInfo: React.FC<SignUpInfoProps> = ({ navigation }) => {
             password === confirmedPassword &&
             isActive
           ) {
-            navigation.navigate('SignUpHome');
-          } else {
-            Alert.alert(
-              '알림',
-              '네모바지 스폰지밥~!~!~!🤪',
-              [
-                {
-                  text: '확인',
-                },
-              ],
-              { cancelable: false },
+            const { available } = await request<{ available: 0 | 1 }>(
+              'auth/username',
+              {
+                method: 'POST',
+                body: `username=${userName}`,
+              },
             );
+
+            if (available) {
+              setUserData({ name: userName, password });
+              navigation.navigate('SignUpHome');
+              return;
+            }
           }
+          Alert.alert(
+            '알림',
+            '네모바지 스폰지밥~!~!~!🤪',
+            [
+              {
+                text: '확인',
+              },
+            ],
+            { cancelable: false },
+          );
         }}
       />
     </SafeAreaView>

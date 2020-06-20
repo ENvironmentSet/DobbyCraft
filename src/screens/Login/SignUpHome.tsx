@@ -5,7 +5,8 @@ import Button from '../../components/Button';
 import { NavigationScreenProp } from 'react-navigation';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
-
+import request from '../../utils/request';
+import { useUserData, useUserDataUpdater } from '../../User';
 
 const marker = require('../../assets/marker.png');
 
@@ -14,7 +15,6 @@ interface SignUpHomeProps {
 }
 
 const SignUpHome: React.FC<SignUpHomeProps> = ({ navigation }) => {
-
   useEffect(() => {
     Geolocation.getCurrentPosition(async info => {
       setLatitude(info.coords.latitude)
@@ -24,8 +24,8 @@ const SignUpHome: React.FC<SignUpHomeProps> = ({ navigation }) => {
       if (response.ok) { // HTTP 상태 코드가 200~299일 경우
         // 응답 몬문을 받습니다(관련 메서드는 아래에서 설명).
         let json = await response.json();
-        setUserContry(json.results[0].address_components[2].short_name)
-        setUserAddr(json.results[0].formatted_address);
+        setUserAddr(json.results[0].address_components[2].short_name)
+        setUserFullAddr(json.results[0].formatted_address);
       } else {
 
       }
@@ -33,12 +33,14 @@ const SignUpHome: React.FC<SignUpHomeProps> = ({ navigation }) => {
   }, [])
 
 
+  const setUserData = useUserDataUpdater();
+  const { name, password } = useUserData();
   const [latitude, setLatitude] = useState(37.5030415);
   const [longitude, setLongitude] = useState(126.946423);
   const [latitudeDelta, setLatitudeDelta] = useState(0.001);
   const [longitudeDelta, setLongitudeDelta] = useState(0.001);
-  const [userContry, setUserContry] = useState('');
   const [userAddr, setUserAddr] = useState('');
+  const [userFullAddr, setUserFullAddr] = useState('');
   const onClickSkipButtonConfirm = () =>
     Alert.alert(
       'Are you sure?',
@@ -48,7 +50,24 @@ const SignUpHome: React.FC<SignUpHomeProps> = ({ navigation }) => {
           text: 'No',
           style: 'destructive',
         },
-        { text: 'Yes', onPress: () => navigation.navigate('SignUpFin') },
+        {
+          text: 'Yes',
+          onPress: async () => {
+            await request<{ result: 0 | 1 }>('auth/user', {
+              method: 'POST',
+              body: `username=${name}&password=${password}&latitude=${latitude}&longitude=${longitude}&userAddr=${userAddr}&isHomeSet=0`,
+            });
+
+            setUserData({
+              home: {
+                latitude: String(latitude),
+                longitude: String(longitude),
+                address: userAddr,
+              },
+            });
+            navigation.navigate('SignUpFin');
+          },
+        },
       ],
     );
 
@@ -85,7 +104,7 @@ const SignUpHome: React.FC<SignUpHomeProps> = ({ navigation }) => {
             setLongitudeDelta(longitudeDelta);
           }}>
           <Marker
-            title={userAddr}
+            title={userFullAddr}
             image={marker}
             coordinate={{ latitude, longitude }}
           />
@@ -94,7 +113,21 @@ const SignUpHome: React.FC<SignUpHomeProps> = ({ navigation }) => {
       <View style={{ width: '100%', paddingHorizontal: 30 }}>
         <Button
           buttonLabel="SIGN UP"
-          onClickButton={() => navigation.navigate('SignUpFin')}
+          onClickButton={async () => {
+            await request<{ result: 0 | 1 }>('auth/user', {
+              method: 'POST',
+              body: `username=${name}&password=${password}&latitude=${latitude}&longitude=${longitude}&userAddr=${userAddr}&isHomeSet=1`,
+            });
+
+            setUserData({
+              home: {
+                latitude: String(latitude),
+                longitude: String(longitude),
+                address: userAddr,
+              },
+            });
+            navigation.navigate('SignUpFin');
+          }}
         />
       </View>
     </SafeAreaView>
