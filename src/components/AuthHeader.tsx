@@ -12,11 +12,12 @@ const AuthHeader: React.FC<AuthHeaderProps> = ({
   isShowSkip,
   headerText,
   descText,
+  onClickSkipButton
 }) => {
   return (
     <View style={styles.wrapper}>
       {isShowSkip && (
-        <TouchableOpacity style={styles.rightTopButton}>
+        <TouchableOpacity style={styles.rightTopButton} onPress={onClickSkipButton}>
           <Text>Skip now</Text>
         </TouchableOpacity>
       )}
@@ -46,7 +47,9 @@ const styles = StyleSheet.create({
   },
   descText: {
     color: '#333',
-    fontSize: 11,
+    fontSize: 12,
+    marginTop: 5,
+    lineHeight: 16
   },
   rightTopButton: {
     marginTop: 15,
