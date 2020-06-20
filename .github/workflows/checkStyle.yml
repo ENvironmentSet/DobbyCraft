@@ -1,0 +1,29 @@
+name: Node.js CI
+
+on: 
+  pull_request:
+    branches: 
+      - master
+      - develop
+      - feature/*
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: GitHub Action for Yarn
+      uses: Borales/actions-yarn@v2.1.0
+    - run: yarn lint
+      env:
+        CI: true
