@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   StyleSheet,
   ViewStyle,
@@ -6,12 +6,14 @@ import {
   View,
   SafeAreaView,
   TouchableWithoutFeedback,
+  Alert,
 } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 import FastImage from 'react-native-fast-image';
 import LinearGradient from 'react-native-linear-gradient';
 import BoxedShare from '../../components/SharedBox';
 import { useUserData } from '../../User';
+import { getCountedTime } from '../StayedTime';
 
 const BackIcn = require('../../assets/back.png');
 
@@ -20,7 +22,22 @@ interface SafeBuildingProps {
 }
 
 const ImSafeScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
-  const { name } = useUserData();
+  const { name, home: { address } = { address: 'Nowhere' } } = useUserData();
+
+  useEffect(() => {
+    if (address === 'Nowhere') {
+      Alert.alert(
+        'Notification',
+        'You need to set your home to use this feature',
+        [
+          {
+            text: 'Confirm',
+          },
+        ],
+        { cancelable: false },
+      );
+    }
+  }, [address]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -60,11 +77,11 @@ const ImSafeScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
           <View style={{ marginTop: 100, alignItems: 'center' }}>
             <Text style={{ color: '#fff', fontSize: 20 }}>I have been at</Text>
             <Text style={{ color: '#fff', fontSize: 20 }}>home for</Text>
-            <Text style={{ color: '#fff', fontSize: 100 }}>60</Text>
-            <Text style={{ color: '#fff', fontSize: 20 }}>
-              hours & 20 minutes
+            <Text style={{ color: '#fff', fontSize: 100 }}>
+              {getCountedTime()}
             </Text>
-            <Text style={{ color: '#fff', fontSize: 20 }}>INCHEON-SI</Text>
+            <Text style={{ color: '#fff', fontSize: 20 }}>minutes</Text>
+            <Text style={{ color: '#fff', fontSize: 20 }}>{address}</Text>
           </View>
           <View
             style={{

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -13,6 +13,9 @@ import SnsLastFeed from '../../components/SnsLastFeed';
 import { SliderBox } from 'react-native-image-slider-box';
 import { NavigationScreenProp } from 'react-navigation';
 import moment from 'moment';
+import {runStayTimer, stopStayTimer} from '../StayedTime';
+import {useUserData} from '../../User';
+
 const BottomData = [
   {
     title: 'Guidelines',
@@ -48,6 +51,20 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ navigation }) => {
+  const { home } = useUserData();
+
+  useEffect(() => {
+    if (home !== undefined) {
+      const { latitude, longitude } = home;
+
+      runStayTimer({
+        latitude: Number(latitude),
+        longitude: Number(longitude),
+      });
+      return stopStayTimer;
+    }
+  }, [home]);
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.topDivision}>
