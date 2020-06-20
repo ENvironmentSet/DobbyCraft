@@ -1,5 +1,5 @@
 import NetInfo from '@react-native-community/netinfo';
-import * as React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import {
   Alert,
   BackHandler,
@@ -68,45 +68,50 @@ const MainSwitch = createSwitchNavigator(
 
 const AppContainer = createAppContainer(MainSwitch);
 
-class App extends React.Component {
-  currentIndex = 0;
-  navigation = React.createRef<NavigationContainerComponent>();
+function App() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const navigator = useRef<NavigationContainerComponent>(null);
 
-  async componentDidMount() {
-    for (const requiredPermission of requiredPermissions[Platform.OS]) {
-      await request(requiredPermission);
+  useEffect(() => {
+    async function requestPermissions() {
+      for (const requiredPermission of requiredPermissions[Platform.OS]) {
+        await request(requiredPermission);
+      }
     }
 
-    const { isConnected } = await NetInfo.fetch();
+    async function checkNetworkConnection() {
+      const { isConnected } = await NetInfo.fetch();
 
-    if (!isConnected) {
-      Alert.alert(
-        '알림',
-        '인터넷이 연결되어 있지 않습니다.\n앱을 종료합니다.',
-        [
-          {
-            text: '확인',
-            onPress: () =>
-              Platform.OS === 'ios'
-                ? NativeModules.exitApp.exitApp()
-                : BackHandler.exitApp(),
-          },
-        ],
-        { cancelable: false },
-      );
+      if (!isConnected) {
+        Alert.alert(
+          '알림',
+          '인터넷이 연결되어 있지 않습니다.\n앱을 종료합니다.',
+          [
+            {
+              text: '확인',
+              onPress: () =>
+                Platform.OS === 'ios'
+                  ? NativeModules.exitApp.exitApp()
+                  : BackHandler.exitApp(),
+            },
+          ],
+          { cancelable: false },
+        );
+      }
     }
-  }
 
-  render() {
-    return (
-      <AppContainer
-        ref={this.navigation}
-        onNavigationStateChange={(_, { index: nextIndex }) => {
-          this.currentIndex = nextIndex;
-        }}
-      />
-    );
-  }
+    requestPermissions();
+    checkNetworkConnection();
+  });
+
+  return (
+    <AppContainer
+      ref={navigator}
+      onNavigationStateChange={(_, { index: nextIndex }) =>
+        setCurrentIndex(nextIndex)
+      }
+    />
+  );
 }
 
 export default App;
