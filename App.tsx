@@ -1,6 +1,7 @@
 import NetInfo from '@react-native-community/netinfo';
 import React, { useRef, useState } from 'react';
 import useAsyncEffect from './src/utils/useAsyncEffect';
+import { ProvideUserData } from './src/User';
 import {
   Alert,
   BackHandler,
@@ -66,12 +67,14 @@ function App() {
   });
 
   return (
-    <AppContainer
-      ref={navigator}
-      onNavigationStateChange={(_, { index: nextIndex }) =>
-        setCurrentIndex(nextIndex)
-      }
-    />
+    <ProvideUserData>
+      <AppContainer
+        ref={navigator}
+        onNavigationStateChange={(_, { index: nextIndex }) =>
+          setCurrentIndex(nextIndex)
+        }
+      />
+    </ProvideUserData>
   );
 }
 
