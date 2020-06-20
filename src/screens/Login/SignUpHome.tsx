@@ -23,9 +23,13 @@ const SignUpHome: React.FC<SignUpHomeProps> = ({ navigation }) => {
 
       if (response.ok) { // HTTP 상태 코드가 200~299일 경우
         // 응답 몬문을 받습니다(관련 메서드는 아래에서 설명).
-        let json = await response.json();
-        setUserAddr(json.results[0].address_components[2].short_name)
-        setUserFullAddr(json.results[0].formatted_address);
+        let { results: [{ address_components, formatted_address }]} = await response.json();
+        setUserAddr(
+          address_components.find(({ types }: { types: string[] }) =>
+            types.includes('political'),
+          ).short_name,
+        );
+        setUserFullAddr(formatted_address);
       } else {
 
       }
@@ -55,7 +59,7 @@ const SignUpHome: React.FC<SignUpHomeProps> = ({ navigation }) => {
           onPress: async () => {
             await request<{ result: 0 | 1 }>('auth/user', {
               method: 'POST',
-              body: `username=${name}&password=${password}&latitude=${latitude}&longitude=${longitude}&userAddr=${userAddr}&isHomeSet=0`,
+              body: `username=${name}&password=${password}&latitude=0&longitude=0&address=&isHomeSet=0`,
             });
 
             setUserData({
@@ -116,7 +120,7 @@ const SignUpHome: React.FC<SignUpHomeProps> = ({ navigation }) => {
           onClickButton={async () => {
             await request<{ result: 0 | 1 }>('auth/user', {
               method: 'POST',
-              body: `username=${name}&password=${password}&latitude=${latitude}&longitude=${longitude}&userAddr=${userAddr}&isHomeSet=1`,
+              body: `username=${name}&password=${password}&latitude=${latitude}&longitude=${longitude}&address=${userAddr}&isHomeSet=1`,
             });
 
             setUserData({
