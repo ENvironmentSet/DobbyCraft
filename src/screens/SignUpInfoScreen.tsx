@@ -27,8 +27,8 @@ const SignUpInfoScreen: React.FC = () => {
             onInput={(text: string) => setUserName(text)}
           />
           <BoxInput
-            label="re-password"
-            placeholder="retype password"
+            label="confirm password"
+            placeholder="confirm password"
             value={userName}
             onInput={(text: string) => setUserName(text)}
           />

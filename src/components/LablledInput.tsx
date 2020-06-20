@@ -20,7 +20,7 @@ const LablledInput: React.FC<BoxInputProps> = ({
       <TextInput
         style={styles.input}
         value={value}
-        onChangeText={text => onInput(text)}
+        onChangeText={onInput}
         placeholder={placeholder}
       />
     </View>
