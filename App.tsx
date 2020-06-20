@@ -28,6 +28,9 @@ import LoginScreen from './src/screens/LoginScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import HealthCheckScreen from './src/screens/HealthCheckScreen';
 import HealthDetailScreen from './src/screens/HealthDetailScreen';
+import GuideLineScreen from './src/screens/GuideLineScreen';
+import ImSafeScreen from './src/screens/ImSafeScreen';
+import SafeBuildingScreen from './src/screens/SafeBuildingScreen';
 
 YellowBox.ignoreWarnings([
   'Unrecognized WebSocket connection option(s) `agent`, `perMessageDeflate`, `pfx`, `key`, `passphrase`, `cert`, `ca`, `ciphers`, `rejectUnauthorized`. Did you mean to put these under `headers`?',
@@ -47,7 +50,10 @@ const LoginStack = createStackNavigator(
 const HomeStack = createStackNavigator({
   Home : HomeScreen,
   HealthCheck : HealthCheckScreen,
-  HealthDetail : HealthDetailScreen
+  HealthDetail : HealthDetailScreen,
+  Guideline: GuideLineScreen,
+  Safe: ImSafeScreen,
+  SafeBuliding : SafeBuildingScreen
 }, {
   headerMode: "none"
 })
