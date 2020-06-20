@@ -2,14 +2,14 @@ import { inject, observer } from 'mobx-react';
 import * as React from 'react';
 import { NavigationScreenProp, SafeAreaView } from 'react-navigation';
 import Loading from '../components/Loading';
-import { UserStoreType } from '../store/UserStore';
+import { UserStore } from '../store/UserStore';
 
 interface LoadingScreenProps {
   navigation: NavigationScreenProp<{}>;
-  UserStore: UserStoreType;
+  UserStore: UserStore;
 }
 
-@inject('UserStore')
+@inject('userStore')
 @observer
 class LoadingScreen extends React.Component<LoadingScreenProps> {
   render() {

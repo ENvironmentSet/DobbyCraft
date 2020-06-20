@@ -1,15 +1,11 @@
 import { observable } from 'mobx';
 
-export type UserType = {
+export type User = {
   pid: string;
 };
 
-export interface UserStoreType {
-  data?: UserType;
-}
-
-class UserStore implements UserStoreType {
-  @observable data?: UserType;
+export class UserStore {
+  @observable data?: User;
 }
 
 const userStore: UserStore = new UserStore();
