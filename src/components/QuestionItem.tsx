@@ -35,10 +35,10 @@ const QuestionItem: React.FC<QuestionProps> = ({ obj, onPress }) => {
             marginLeft: 20,
             marginTop: 5,
           }}>
-          <Text style={{ color: '#333', fontSize: 15 }}>
-            {obj.desc.length > 30
-              ? obj.desc.slice(0, 30) + '...'
-              : obj.desc.slice(0, 30)}
+          <Text style={{ color: '#333', fontSize: 15, marginRight: 20 }}>
+            {obj.desc.length > 81
+              ? obj.desc.slice(0, 80) + '...'
+              : obj.desc.slice(0, 80)}
           </Text>
         </View>
         <View
