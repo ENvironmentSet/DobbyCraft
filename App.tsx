@@ -1,5 +1,4 @@
 import NetInfo from '@react-native-community/netinfo';
-import { observer, Provider } from 'mobx-react';
 import * as React from 'react';
 import {
   Alert,
@@ -16,7 +15,6 @@ import {
   createStackNavigator,
 } from 'react-navigation';
 
-import stores from './src/store';
 import LoadingScreen from './src/screens/LoadingScreen';
 
 import requiredPermissions from './src/constants/requiredPermissions';
@@ -70,7 +68,6 @@ const MainSwitch = createSwitchNavigator(
 
 const AppContainer = createAppContainer(MainSwitch);
 
-@observer
 class App extends React.Component {
   currentIndex = 0;
   navigation = React.createRef<NavigationContainerComponent>();
@@ -102,14 +99,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <Provider {...stores}>
-        <AppContainer
-          ref={this.navigation}
-          onNavigationStateChange={(_, { index: nextIndex }) => {
-            this.currentIndex = nextIndex;
-          }}
-        />
-      </Provider>
+      <AppContainer
+        ref={this.navigation}
+        onNavigationStateChange={(_, { index: nextIndex }) => {
+          this.currentIndex = nextIndex;
+        }}
+      />
     );
   }
 }
