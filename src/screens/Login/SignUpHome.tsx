@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, ViewStyle, View, SafeAreaView, Alert } from 'react-native';
 import AuthHeader from '../../components/AuthHeader';
 import Button from '../../components/Button';
 import { NavigationScreenProp } from 'react-navigation';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import Geolocation from '@react-native-community/geolocation';
+
 
 const marker = require('../../assets/marker.png');
 
@@ -12,10 +14,31 @@ interface SignUpHomeProps {
 }
 
 const SignUpHome: React.FC<SignUpHomeProps> = ({ navigation }) => {
+
+  useEffect(() => {
+    Geolocation.getCurrentPosition(async info => {
+      setLatitude(info.coords.latitude)
+      setLongitude(info.coords.longitude)
+      let response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${info.coords.latitude},${info.coords.longitude}&key=AIzaSyApHwjvMnawrDV2x0u3dHSw0rpdR1w0rAU&language=en`);
+
+      if (response.ok) { // HTTP 상태 코드가 200~299일 경우
+        // 응답 몬문을 받습니다(관련 메서드는 아래에서 설명).
+        let json = await response.json();
+        setUserContry(json.results[0].address_components[2].short_name)
+        setUserAddr(json.results[0].formatted_address);
+      } else {
+
+      }
+    });
+  }, [])
+
+
   const [latitude, setLatitude] = useState(37.5030415);
   const [longitude, setLongitude] = useState(126.946423);
   const [latitudeDelta, setLatitudeDelta] = useState(0.001);
   const [longitudeDelta, setLongitudeDelta] = useState(0.001);
+  const [userContry, setUserContry] = useState('');
+  const [userAddr, setUserAddr] = useState('');
   const onClickSkipButtonConfirm = () =>
     Alert.alert(
       'Are you sure?',
@@ -62,7 +85,7 @@ const SignUpHome: React.FC<SignUpHomeProps> = ({ navigation }) => {
             setLongitudeDelta(longitudeDelta);
           }}>
           <Marker
-            title={'Locate your home!'}
+            title={userAddr}
             image={marker}
             coordinate={{ latitude, longitude }}
           />
