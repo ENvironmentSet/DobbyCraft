@@ -20,7 +20,15 @@ const SnsLastFeed: React.FC<SnsLast> = ({
   return (
     <View style={styles.container}>
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <View style={{ width: 30, height: 30, backgroundColor: '#000' }} />
+        <View
+          style={{
+            width: 30,
+            height: 30,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Text style={{ fontSize: 25, marginLeft: 10 }}>🚨</Text>
+        </View>
         <Text style={{ marginLeft: 17, fontWeight: 'bold' }}>{author}</Text>
         <TouchableWithoutFeedback onPress={() => Linking.openURL(link)}>
           <Text

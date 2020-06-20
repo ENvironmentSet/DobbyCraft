@@ -95,7 +95,7 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
         <Text style={styles.Date}>{moment().format('dddd DD MMMM')}</Text>
         <Text style={styles.header}>Stay Safe!</Text>
         <Text style={styles.desc}>Latest News</Text>
-          <SnsLastFeed feed={feed} />
+        <SnsLastFeed feed={feed} />
         <View style={{ position: 'absolute', top: 250, left: -30 }}>
           <SliderBox images={images} />
         </View>
