@@ -12,6 +12,12 @@ interface LoadingScreenProps {
 @inject('userStore')
 @observer
 class LoadingScreen extends React.Component<LoadingScreenProps> {
+
+  componentDidMount() {
+    const { navigation } = this.props;
+    setTimeout(() => navigation.navigate("Login"), 1000)
+  }
+
   render() {
     return (
       <SafeAreaView
