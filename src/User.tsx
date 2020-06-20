@@ -14,7 +14,10 @@ export interface User {
     latitude: string;
     longitude: string;
   };
-  token?: string;
+  token?: {
+    accessToken: string;
+    refreshToken: string;
+  };
 }
 
 const userContext = React.createContext<{

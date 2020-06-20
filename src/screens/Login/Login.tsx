@@ -4,12 +4,15 @@ import Button from '../../components/Button';
 import LabelledInput from '../../components/LabelledInput';
 import AuthHeader from '../../components/AuthHeader';
 import { NavigationScreenProp } from 'react-navigation';
+import { useUserDataUpdater } from '../../User';
+import request from '../../utils/request';
 
 interface LoginProps {
   navigation: NavigationScreenProp<{}>;
 }
 
 const Login: React.FC<LoginProps> = ({ navigation }) => {
+  const setUserData = useUserDataUpdater();
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
@@ -35,24 +38,54 @@ const Login: React.FC<LoginProps> = ({ navigation }) => {
       </View>
       <Button
         buttonLabel="SIGN IN"
-        onClickButton={() => {
+        onClickButton={async () => {
           const testUserName = /[A-Za-z]\w{5,11}/;
           const testPassword = /[A-Za-z]\w{7,19}/;
 
           if (testUserName.test(userName) && testPassword.test(password)) {
+            const {
+              accessToken,
+              refreshToken,
+              extraInformation: { latitude, longitude, address },
+            } = await request<{
+              accessToken: string;
+              refreshToken: string;
+              extraInformation: {
+                latitude: string;
+                longitude: string;
+                address: string;
+              };
+            }>('auth', {
+              method: 'POST',
+              body: `username=${userName}&password=${password}`,
+            });
+
+            setUserData({
+              name: userName,
+              home: {
+                latitude: latitude,
+                longitude,
+                address,
+              },
+              token: {
+                accessToken,
+                refreshToken,
+              },
+            });
+
             navigation.navigate('Home');
-          } else {
-            Alert.alert(
-              '알림',
-              '네모바지 스폰지밥~!~!~!🤪',
-              [
-                {
-                  text: '확인',
-                },
-              ],
-              { cancelable: false },
-            );
+            return;
           }
+          Alert.alert(
+            '알림',
+            '네모바지 스폰지밥~!~!~!🤪',
+            [
+              {
+                text: '확인',
+              },
+            ],
+            { cancelable: false },
+          );
         }}
       />
     </SafeAreaView>
