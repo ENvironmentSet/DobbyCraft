@@ -13,20 +13,30 @@ import {
   createAppContainer,
   createSwitchNavigator,
   NavigationContainerComponent,
+  createStackNavigator,
 } from 'react-navigation';
 
 import stores from './src/store';
 import LoadingScreen from './src/screens/LoadingScreen';
 
 import requiredPermissions from './src/constants/requiredPermissions';
+import SignUpInfoScreen from './src/screens/SignUpInfoScreen';
 
 YellowBox.ignoreWarnings([
   'Unrecognized WebSocket connection option(s) `agent`, `perMessageDeflate`, `pfx`, `key`, `passphrase`, `cert`, `ca`, `ciphers`, `rejectUnauthorized`. Did you mean to put these under `headers`?',
 ]);
 
+const LoginStack = createStackNavigator({
+    SignUpInfo: SignUpInfoScreen,
+}, {
+  headerMode: "none"
+});
+
+
 const MainSwitch = createSwitchNavigator(
   {
     Loading: LoadingScreen,
+    Login: LoginStack
   },
   {
     initialRouteName: 'Loading',
@@ -78,5 +88,7 @@ class App extends React.Component {
     );
   }
 }
+
+
 
 export default App;

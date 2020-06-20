@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 
 interface ButtonProps {
   buttonLabel: string;
@@ -8,11 +8,11 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({ buttonLabel, onClickButton }) => {
   return (
-    <TouchableOpacity style={styles.wrapper} onPress={onClickButton}>
-      <View>
+    <TouchableWithoutFeedback onPress={onClickButton}>
+      <View style={styles.wrapper}>
         <Text style={styles.text}>{buttonLabel}</Text>
       </View>
-    </TouchableOpacity>
+    </TouchableWithoutFeedback>
   );
 };
 

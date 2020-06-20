@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
 import FastImage from 'react-native-fast-image';
 const BeforeIcon = require('../assets/before.png');
 const AfterIcon = require('../assets/after.png');
@@ -16,8 +16,8 @@ const AgreementPolicy: React.FC<AgreementPolicyProps> = ({
   changeIsActive,
 }) => {
   return (
-    <View style={styles.wrapper}>
-      <TouchableOpacity onPress={() => changeIsActive(!isActive)}>
+    <TouchableWithoutFeedback onPress={() => changeIsActive(!isActive)}>
+      <View style={styles.wrapper}>
         <View style={styles.checkBox}>
           {isActive ? (
             <FastImage source={AfterIcon} style={{ width: 24, height: 24 }} />
@@ -25,9 +25,9 @@ const AgreementPolicy: React.FC<AgreementPolicyProps> = ({
             <FastImage source={BeforeIcon} style={{ width: 24, height: 24 }} />
           )}
         </View>
-      </TouchableOpacity>
-      <Text style={styles.label}>{label}</Text>
-    </View>
+        <Text style={styles.label}>{label}</Text>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 

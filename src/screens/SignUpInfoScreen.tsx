@@ -16,19 +16,19 @@ const SignUpInfoScreen: React.FC = () => {
         <View style={{ flex: 3 }}>
           <BoxInput
             label="username"
-            placeholder="6 ~ 12 letter + num"
+            placeholder="6 ~ 12 characters"
             value={userName}
             onChangeAction={(text: string) => setUserName(text)}
           />
           <BoxInput
             label="password"
-            placeholder="8 ~ 20 letter + num"
+            placeholder="8 ~ 20 characters"
             value={userName}
             onChangeAction={(text: string) => setUserName(text)}
           />
           <BoxInput
             label="re-password"
-            placeholder="password re type"
+            placeholder="retype password"
             value={userName}
             onChangeAction={(text: string) => setUserName(text)}
           />
