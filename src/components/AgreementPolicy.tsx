@@ -19,7 +19,10 @@ const AgreementPolicy: React.FC<AgreementPolicyProps> = ({
     <TouchableWithoutFeedback onPress={() => onActivationChange(!isActive)}>
       <View style={styles.wrapper}>
         <View style={styles.checkBox}>
-          <FastImage source={isActive ? AfterIcon : BeforeIcon } style={{ width: 24, height: 24 }} />
+          <FastImage
+            source={isActive ? AfterIcon : BeforeIcon}
+            style={{ width: 24, height: 24 }}
+          />
         </View>
         <Text style={styles.label}>{label}</Text>
       </View>

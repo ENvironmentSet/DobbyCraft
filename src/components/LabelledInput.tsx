@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Text, View, TextInput, StyleSheet } from 'react-native';
 
 interface BoxInputProps {
@@ -6,13 +6,15 @@ interface BoxInputProps {
   placeholder: string;
   onInput: (text: string) => void;
   value: string;
+  secure?: boolean;
 }
 
-const LablledInput: React.FC<BoxInputProps> = ({
+const LabelledInput: React.FC<BoxInputProps> = ({
   label,
   placeholder,
   onInput,
   value,
+  secure = false,
 }) => {
   return (
     <View style={styles.wrapper}>
@@ -22,6 +24,7 @@ const LablledInput: React.FC<BoxInputProps> = ({
         value={value}
         onChangeText={onInput}
         placeholder={placeholder}
+        secureTextEntry={secure}
       />
     </View>
   );
@@ -43,4 +46,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LablledInput;
+export default LabelledInput;

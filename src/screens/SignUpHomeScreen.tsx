@@ -9,22 +9,19 @@ interface SignUpHomeProps {
   navigation: NavigationScreenProp<{}>;
 }
 
-
-
 const SignUpHomeScreen: React.FC<SignUpHomeProps> = ({ navigation }) => {
-
-    const onClickSkipButtonConfirm = () => 
-        Alert.alert(
-            "Are you sure?",
-            `You need to mark your home to use "I'm Safe!" `,
-            [
-              {
-                text: "No",
-                style: "destructive"
-              },
-              { text: "Yes", onPress: () => navigation.navigate('SignUpFin') }
-            ]
-          );
+  const onClickSkipButtonConfirm = () =>
+    Alert.alert(
+      'Are you sure?',
+      `You need to mark your home to use "I'm Safe!" `,
+      [
+        {
+          text: 'No',
+          style: 'destructive',
+        },
+        { text: 'Yes', onPress: () => navigation.navigate('SignUpFin') },
+      ],
+    );
 
   return (
     <SafeAreaView style={styles.container}>

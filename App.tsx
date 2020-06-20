@@ -31,7 +31,8 @@ YellowBox.ignoreWarnings([
   'Unrecognized WebSocket connection option(s) `agent`, `perMessageDeflate`, `pfx`, `key`, `passphrase`, `cert`, `ca`, `ciphers`, `rejectUnauthorized`. Did you mean to put these under `headers`?',
 ]);
 
-const LoginStack = createStackNavigator({
+const LoginStack = createStackNavigator(
+  {
     Choose: ChooseScreen,
     SignUpInfo: SignUpInfoScreen,
     SignUpHome: SignUpHomeScreen,
@@ -104,7 +105,5 @@ class App extends React.Component {
     );
   }
 }
-
-
 
 export default App;
