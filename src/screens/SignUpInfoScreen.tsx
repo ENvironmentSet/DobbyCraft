@@ -18,23 +18,23 @@ const SignUpInfoScreen: React.FC = () => {
             label="username"
             placeholder="6 ~ 12 characters"
             value={userName}
-            onInput={(text: string) => setUserName(text)}
+            onInput={setUserName}
           />
           <BoxInput
             label="password"
             placeholder="8 ~ 20 characters"
             value={userName}
-            onInput={(text: string) => setUserName(text)}
+            onInput={setUserName}
           />
           <BoxInput
             label="confirm password"
             placeholder="confirm password"
             value={userName}
-            onInput={(text: string) => setUserName(text)}
+            onInput={setUserName}
           />
           <AgreementPolicy
             isActive={isActive}
-            onActivationChange={(value: boolean) => setIsActive(value)}
+            onActivationChange={setIsActive}
             label="I agree to the Service Agreement"
           />
         </View>
