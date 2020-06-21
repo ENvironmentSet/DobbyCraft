@@ -9,7 +9,7 @@ interface LoadingScreenProps {
 class LoadingScreen extends React.Component<LoadingScreenProps> {
   componentDidMount() {
     const { navigation } = this.props;
-    setTimeout(() => navigation.navigate('Login'), 1000);
+    setTimeout(() => navigation.navigate('Login'), 500);
   }
 
   render() {
