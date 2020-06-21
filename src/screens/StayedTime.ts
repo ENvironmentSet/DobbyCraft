@@ -67,6 +67,7 @@ export function runStayTimer(userHome: {
   longitude: number;
 }) {
   if (!isOn) {
+    countedTime = 0;
     BackgroundTimer.runBackgroundTimer(async () => {
       Geolocation.getCurrentPosition(async ({ coords }) => {
         if (isNearby(userHome, coords)) {
@@ -80,8 +81,10 @@ export function runStayTimer(userHome: {
                 text: 'Confirm',
                 onPress: () => runStayTimer(userHome),
               },
+              {
+                text: 'No',
+              },
             ],
-            { cancelable: true },
           );
           stopStayTimer();
         }
