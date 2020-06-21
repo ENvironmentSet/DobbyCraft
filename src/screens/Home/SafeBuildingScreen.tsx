@@ -101,6 +101,12 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
         }}>
         <TouchableWithoutFeedback
           onPress={() => {
+            setField1(0);
+            setField2(0);
+            setField3(0);
+            setField4(0);
+            setField5(0);
+            setField6(0);
             if (isLongSeen) setIsLongSeen(false);
             else if (isSeen) setIsSeen(false);
             else navigation.goBack();
@@ -495,6 +501,12 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
                       { cancelable: false },
                     );
                   }
+                  setField1(0);
+                  setField2(0);
+                  setField3(0);
+                  setField4(0);
+                  setField5(0);
+                  setField6(0);
                   setIsLongSeen(false);
                 } else {
                   Alert.alert(
