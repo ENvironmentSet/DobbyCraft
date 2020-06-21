@@ -5,6 +5,7 @@ import {
   Text,
   View,
   TouchableWithoutFeedback,
+  Alert,
 } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import FastImage from 'react-native-fast-image';
@@ -36,6 +37,7 @@ interface Building {
 
 interface BuildingDetail {
   buildingName: string;
+  buildingIdx: number;
   safetyLevel: string;
   isReviewed: boolean;
   checkItems: {
@@ -133,7 +135,10 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
               setLatitude(Number(building.latitude));
               setLongitude(Number(building.longitude));
 
-              setSelectedBuilding(buildingDetail);
+              setSelectedBuilding({
+                ...buildingDetail,
+                buildingIdx: building.buildingIdx,
+              });
               setIsSeen(true);
             }}
           />
@@ -309,48 +314,121 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
                 1. Are the elevator buttons in the building covered with
                 antibacterial film?
               </Text>
-              <AgreementPolicy label="Yes" />
-              <AgreementPolicy label="No" />
-              <AgreementPolicy label="Unable to know" />
+              <AgreementPolicy
+                label="Yes"
+                onActivationChange={() => setField1(5)}
+              />
+              <AgreementPolicy
+                label="No"
+                onActivationChange={() => setField1(1)}
+              />
+              <AgreementPolicy
+                label="Unable to know"
+                onActivationChange={() => setField1(2)}
+              />
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
                 2. Is the sanitizer placed all over the building?
               </Text>
-              <AgreementPolicy label="Yes" />
-              <AgreementPolicy label="No" />
-              <AgreementPolicy label="Unable to know" />
+              <AgreementPolicy
+                label="Yes"
+                onActivationChange={() => setField2(5)}
+              />
+              <AgreementPolicy
+                label="No"
+                onActivationChange={() => setField2(1)}
+              />
+              <AgreementPolicy
+                label="Unable to know"
+                onActivationChange={() => setField2(2)}
+              />
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
                 3. Does disinfection run or a regular?
               </Text>
-              <AgreementPolicy label="Yes" />
-              <AgreementPolicy label="No" />
-              <AgreementPolicy label="Unable to know" />
+              <AgreementPolicy
+                label="Yes"
+                onActivationChange={() => setField3(5)}
+              />
+              <AgreementPolicy
+                label="No"
+                onActivationChange={() => setField3(1)}
+              />
+              <AgreementPolicy
+                label="Unable to know"
+                onActivationChange={() => setField3(2)}
+              />
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
                 4. Is the thermal sensing camera is at the entrance to the
                 building?
               </Text>
-              <AgreementPolicy label="Yes" />
-              <AgreementPolicy label="No" />
-              <AgreementPolicy label="Unable to know" />
+              <AgreementPolicy
+                label="Yes"
+                onActivationChange={() => setField4(5)}
+              />
+              <AgreementPolicy
+                label="No"
+                onActivationChange={() => setField4(1)}
+              />
+              <AgreementPolicy
+                label="Unable to know"
+                onActivationChange={() => setField4(2)}
+              />
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
                 5. Is the clinical thermometer is at the entrance to the
                 building?
               </Text>
-              <AgreementPolicy label="Yes" />
-              <AgreementPolicy label="No" />
-              <AgreementPolicy label="Unable to know" />
+              <AgreementPolicy
+                label="Yes"
+                onActivationChange={() => setField5(5)}
+              />
+              <AgreementPolicy
+                label="No"
+                onActivationChange={() => setField5(1)}
+              />
+              <AgreementPolicy
+                label="Unable to know"
+                onActivationChange={() => setField5(2)}
+              />
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
                 6. Do Most People wear masks ?
               </Text>
-              <AgreementPolicy label="Yes" />
-              <AgreementPolicy label="No" />
-              <AgreementPolicy label="Unable to know" />
+              <AgreementPolicy
+                label="Yes"
+                onActivationChange={() => setField6(5)}
+              />
+              <AgreementPolicy
+                label="No"
+                onActivationChange={() => setField6(1)}
+              />
+              <AgreementPolicy
+                label="Unable to know"
+                onActivationChange={() => setField6(2)}
+              />
             </ScrollView>
           </View>
           <View style={{ marginBottom: 40, marginHorizontal: 30 }}>
             <Button
               buttonLabel="SUBMIT"
               onClickButton={async () => {
-                //@FIXME: Request
+                const { success } = await request<{ success: 0 | 1 }>(
+                  'buildings',
+                  {
+                    method: 'POST',
+                    body: `username=${name}&buildingIdx=${selectedBuilding?.buildingIdx}&field1=${field1}&field2=${field2}&field3=${field3}&field4=${field4}&field5=${field5}&field6=${field6}`,
+                  },
+                );
+
+                if (!success) {
+                  Alert.alert(
+                    'Error',
+                    "Can't send review",
+                    [
+                      {
+                        text: 'Confirm',
+                      },
+                    ],
+                    { cancelable: false },
+                  );
+                }
                 setIsLongSeen(false);
               }}
             />

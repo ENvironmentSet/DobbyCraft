@@ -7,10 +7,20 @@ interface ButtonProps {
   isGray?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ buttonLabel, onClickButton, isGray }) => {
+const Button: React.FC<ButtonProps> = ({
+  buttonLabel,
+  onClickButton,
+  isGray,
+}) => {
   return (
     <TouchableWithoutFeedback onPress={onClickButton}>
-      <View style={[styles.wrapper, isGray ? { backgroundColor : '#ACACAC' } : { backgroundColor: '#007AFF' }]}>
+      <View
+        style={[
+          styles.wrapper,
+          isGray
+            ? { backgroundColor: '#ACACAC' }
+            : { backgroundColor: '#007AFF' },
+        ]}>
         <Text style={styles.text}>{buttonLabel}</Text>
       </View>
     </TouchableWithoutFeedback>
