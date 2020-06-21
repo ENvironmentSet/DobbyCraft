@@ -4,14 +4,13 @@ import {
   ViewStyle,
   Text,
   View,
-  TouchableOpacity,
   TouchableWithoutFeedback,
 } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import FastImage from 'react-native-fast-image';
 import { NavigationScreenProp } from 'react-navigation';
 import Geolocation from '@react-native-community/geolocation';
-import { getWidth, getHeight } from '../../constants/size';
+import { getWidth } from '../../constants/size';
 import Modal from 'react-native-modal';
 import Button from '../../components/Button';
 import { ScrollView } from 'react-native-gesture-handler';

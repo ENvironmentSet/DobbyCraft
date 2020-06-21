@@ -15,31 +15,6 @@ interface SignUpHomeProps {
 }
 
 const SignUpHome: React.FC<SignUpHomeProps> = ({ navigation }) => {
-  useEffect(() => {
-    Geolocation.getCurrentPosition(async info => {
-      setLatitude(info.coords.latitude);
-      setLongitude(info.coords.longitude);
-      let response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${info.coords.latitude},${info.coords.longitude}&key=AIzaSyApHwjvMnawrDV2x0u3dHSw0rpdR1w0rAU&language=en`,
-      );
-
-      if (response.ok) {
-        // HTTP 상태 코드가 200~299일 경우
-        // 응답 몬문을 받습니다(관련 메서드는 아래에서 설명).
-        let {
-          results: [{ address_components, formatted_address }],
-        } = await response.json();
-        setUserAddr(
-          address_components.find(({ types }: { types: string[] }) =>
-            types.includes('political'),
-          ).short_name,
-        );
-        setUserFullAddr(formatted_address);
-      } else {
-      }
-    });
-  }, []);
-
   const setUserData = useUserDataUpdater();
   const { name, password } = useUserData();
   const [latitude, setLatitude] = useState(37.5030415);
@@ -77,6 +52,39 @@ const SignUpHome: React.FC<SignUpHomeProps> = ({ navigation }) => {
         },
       ],
     );
+
+  useEffect(() => {
+    Geolocation.getCurrentPosition(async info => {
+      setLatitude(info.coords.latitude);
+      setLongitude(info.coords.longitude);
+    });
+  }, []);
+
+  useEffect(() => {
+    async function f() {
+      let response = await fetch(
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyApHwjvMnawrDV2x0u3dHSw0rpdR1w0rAU&language=en`,
+      );
+
+      if (response.ok) {
+        // HTTP 상태 코드가 200~299일 경우
+        // 응답 몬문을 받습니다(관련 메서드는 아래에서 설명).
+        let {
+          results: [{ address_components, formatted_address }],
+        } = await response.json();
+
+        console.log(address_components);
+        setUserAddr(
+          address_components.find(({ types }: { types: string[] }) =>
+            types.includes('political'),
+          ).short_name,
+        );
+        setUserFullAddr(formatted_address);
+      }
+    }
+
+    f();
+  }, [latitude, longitude]);
 
   return (
     <SafeAreaView style={styles.container}>
