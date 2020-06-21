@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* DobbyCraftTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* DobbyCraftTests.m */; };
+		07E2762CED6FEECDED4B7B48 /* libPods-DobbyCraft.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6287B43F5AAB1D2F3732A0A4 /* libPods-DobbyCraft.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -16,10 +17,9 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* DobbyCraftTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* DobbyCraftTests.m */; };
-		6F6A6EBAF3E42C4950951CDB /* libPods-DobbyCraft.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E26A4992BD98A99AEC6355EA /* libPods-DobbyCraft.a */; };
-		74EBC56EB737031A769792FA /* libPods-DobbyCraft-DobbyCraftTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7688D8946E155A442EC08C3F /* libPods-DobbyCraft-DobbyCraftTests.a */; };
-		EB65D4BD1E7B4A307C5575C6 /* libPods-DobbyCraft-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2C6FF92E702AD69A13350F /* libPods-DobbyCraft-tvOS.a */; };
-		F804B9EC8089495D237E0D15 /* libPods-DobbyCraft-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3864A0E1010C144627E7908E /* libPods-DobbyCraft-tvOSTests.a */; };
+		339A2041DCB7B3B4EEF80F81 /* libPods-DobbyCraft-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 833AF1B15D03482B26B137F0 /* libPods-DobbyCraft-tvOSTests.a */; };
+		3D3531144C7A0A5783306D3B /* libPods-DobbyCraft-DobbyCraftTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3B9BE210831E3382F88709 /* libPods-DobbyCraft-DobbyCraftTests.a */; };
+		4AADD1C9BF715C424A1B3D53 /* libPods-DobbyCraft-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B71924F720021FD853D94EF /* libPods-DobbyCraft-tvOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,29 +44,29 @@
 		00E356EE1AD99517003FC87E /* DobbyCraftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DobbyCraftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* DobbyCraftTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DobbyCraftTests.m; sourceTree = "<group>"; };
-		09195FFA6D501CA046A10E03 /* Pods-DobbyCraft-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyCraft-tvOS.release.xcconfig"; path = "Target Support Files/Pods-DobbyCraft-tvOS/Pods-DobbyCraft-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* DobbyCraft.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DobbyCraft.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = DobbyCraft/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = DobbyCraft/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = DobbyCraft/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = DobbyCraft/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = DobbyCraft/main.m; sourceTree = "<group>"; };
+		1C82DC1AF4BB173B5A9EE5BC /* Pods-DobbyCraft-DobbyCraftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyCraft-DobbyCraftTests.release.xcconfig"; path = "Target Support Files/Pods-DobbyCraft-DobbyCraftTests/Pods-DobbyCraft-DobbyCraftTests.release.xcconfig"; sourceTree = "<group>"; };
+		2B71924F720021FD853D94EF /* libPods-DobbyCraft-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DobbyCraft-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E47B1E0B4A5D006451C7 /* DobbyCraft-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DobbyCraft-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* DobbyCraft-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DobbyCraft-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3864A0E1010C144627E7908E /* libPods-DobbyCraft-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DobbyCraft-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3C8A6B4CB6C71AB2E295508A /* Pods-DobbyCraft-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyCraft-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-DobbyCraft-tvOS/Pods-DobbyCraft-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		7688D8946E155A442EC08C3F /* libPods-DobbyCraft-DobbyCraftTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DobbyCraft-DobbyCraftTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7F1E11AD4E5331543C19C23A /* Pods-DobbyCraft-DobbyCraftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyCraft-DobbyCraftTests.release.xcconfig"; path = "Target Support Files/Pods-DobbyCraft-DobbyCraftTests/Pods-DobbyCraft-DobbyCraftTests.release.xcconfig"; sourceTree = "<group>"; };
-		A7E8459F39AE9617007DF6B1 /* Pods-DobbyCraft-DobbyCraftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyCraft-DobbyCraftTests.debug.xcconfig"; path = "Target Support Files/Pods-DobbyCraft-DobbyCraftTests/Pods-DobbyCraft-DobbyCraftTests.debug.xcconfig"; sourceTree = "<group>"; };
-		AE74CB51AE5606183EBEEAD9 /* Pods-DobbyCraft.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyCraft.release.xcconfig"; path = "Target Support Files/Pods-DobbyCraft/Pods-DobbyCraft.release.xcconfig"; sourceTree = "<group>"; };
-		BD197191C05B3A467FB9577D /* Pods-DobbyCraft-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyCraft-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-DobbyCraft-tvOSTests/Pods-DobbyCraft-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		C13C751D843C0ED921C59771 /* Pods-DobbyCraft.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyCraft.debug.xcconfig"; path = "Target Support Files/Pods-DobbyCraft/Pods-DobbyCraft.debug.xcconfig"; sourceTree = "<group>"; };
-		E26A4992BD98A99AEC6355EA /* libPods-DobbyCraft.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DobbyCraft.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C3B9BE210831E3382F88709 /* libPods-DobbyCraft-DobbyCraftTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DobbyCraft-DobbyCraftTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D7E1C4182BB3F73E5E55DE0 /* Pods-DobbyCraft-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyCraft-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-DobbyCraft-tvOS/Pods-DobbyCraft-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		548E109256CBAD6B9488D532 /* Pods-DobbyCraft.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyCraft.release.xcconfig"; path = "Target Support Files/Pods-DobbyCraft/Pods-DobbyCraft.release.xcconfig"; sourceTree = "<group>"; };
+		5FDB288F7D9324BE367F78EB /* Pods-DobbyCraft-DobbyCraftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyCraft-DobbyCraftTests.debug.xcconfig"; path = "Target Support Files/Pods-DobbyCraft-DobbyCraftTests/Pods-DobbyCraft-DobbyCraftTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6287B43F5AAB1D2F3732A0A4 /* libPods-DobbyCraft.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DobbyCraft.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		833AF1B15D03482B26B137F0 /* libPods-DobbyCraft-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DobbyCraft-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBF2F6683BEF2B0FF9FD28E6 /* Pods-DobbyCraft.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyCraft.debug.xcconfig"; path = "Target Support Files/Pods-DobbyCraft/Pods-DobbyCraft.debug.xcconfig"; sourceTree = "<group>"; };
+		E3A5D6A3A9DF407DFC1A49B8 /* Pods-DobbyCraft-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyCraft-tvOS.release.xcconfig"; path = "Target Support Files/Pods-DobbyCraft-tvOS/Pods-DobbyCraft-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		EED5F9B3E5EE0421590CAEA3 /* Pods-DobbyCraft-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyCraft-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-DobbyCraft-tvOSTests/Pods-DobbyCraft-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		FF2C6FF92E702AD69A13350F /* libPods-DobbyCraft-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DobbyCraft-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F028929EB93FF3CED6EE7DD9 /* Pods-DobbyCraft-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyCraft-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-DobbyCraft-tvOSTests/Pods-DobbyCraft-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		F4BFF3CA1454684DE878B7AB /* Pods-DobbyCraft-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyCraft-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-DobbyCraft-tvOSTests/Pods-DobbyCraft-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FE2575B2249DF5580093A55C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74EBC56EB737031A769792FA /* libPods-DobbyCraft-DobbyCraftTests.a in Frameworks */,
+				3D3531144C7A0A5783306D3B /* libPods-DobbyCraft-DobbyCraftTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F6A6EBAF3E42C4950951CDB /* libPods-DobbyCraft.a in Frameworks */,
+				07E2762CED6FEECDED4B7B48 /* libPods-DobbyCraft.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB65D4BD1E7B4A307C5575C6 /* libPods-DobbyCraft-tvOS.a in Frameworks */,
+				4AADD1C9BF715C424A1B3D53 /* libPods-DobbyCraft-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F804B9EC8089495D237E0D15 /* libPods-DobbyCraft-tvOSTests.a in Frameworks */,
+				339A2041DCB7B3B4EEF80F81 /* libPods-DobbyCraft-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,7 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
-				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
+				FE2575B2249DF5580093A55C /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -141,10 +141,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				E26A4992BD98A99AEC6355EA /* libPods-DobbyCraft.a */,
-				7688D8946E155A442EC08C3F /* libPods-DobbyCraft-DobbyCraftTests.a */,
-				FF2C6FF92E702AD69A13350F /* libPods-DobbyCraft-tvOS.a */,
-				3864A0E1010C144627E7908E /* libPods-DobbyCraft-tvOSTests.a */,
+				6287B43F5AAB1D2F3732A0A4 /* libPods-DobbyCraft.a */,
+				4C3B9BE210831E3382F88709 /* libPods-DobbyCraft-DobbyCraftTests.a */,
+				2B71924F720021FD853D94EF /* libPods-DobbyCraft-tvOS.a */,
+				833AF1B15D03482B26B137F0 /* libPods-DobbyCraft-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -185,14 +185,14 @@
 		9182ADEDEA0F921840E58C2D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C13C751D843C0ED921C59771 /* Pods-DobbyCraft.debug.xcconfig */,
-				AE74CB51AE5606183EBEEAD9 /* Pods-DobbyCraft.release.xcconfig */,
-				A7E8459F39AE9617007DF6B1 /* Pods-DobbyCraft-DobbyCraftTests.debug.xcconfig */,
-				7F1E11AD4E5331543C19C23A /* Pods-DobbyCraft-DobbyCraftTests.release.xcconfig */,
-				3C8A6B4CB6C71AB2E295508A /* Pods-DobbyCraft-tvOS.debug.xcconfig */,
-				09195FFA6D501CA046A10E03 /* Pods-DobbyCraft-tvOS.release.xcconfig */,
-				EED5F9B3E5EE0421590CAEA3 /* Pods-DobbyCraft-tvOSTests.debug.xcconfig */,
-				BD197191C05B3A467FB9577D /* Pods-DobbyCraft-tvOSTests.release.xcconfig */,
+				BBF2F6683BEF2B0FF9FD28E6 /* Pods-DobbyCraft.debug.xcconfig */,
+				548E109256CBAD6B9488D532 /* Pods-DobbyCraft.release.xcconfig */,
+				5FDB288F7D9324BE367F78EB /* Pods-DobbyCraft-DobbyCraftTests.debug.xcconfig */,
+				1C82DC1AF4BB173B5A9EE5BC /* Pods-DobbyCraft-DobbyCraftTests.release.xcconfig */,
+				4D7E1C4182BB3F73E5E55DE0 /* Pods-DobbyCraft-tvOS.debug.xcconfig */,
+				E3A5D6A3A9DF407DFC1A49B8 /* Pods-DobbyCraft-tvOS.release.xcconfig */,
+				F4BFF3CA1454684DE878B7AB /* Pods-DobbyCraft-tvOSTests.debug.xcconfig */,
+				F028929EB93FF3CED6EE7DD9 /* Pods-DobbyCraft-tvOSTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -204,10 +204,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "DobbyCraftTests" */;
 			buildPhases = (
-				500C5A85A7E0A147B63A6396 /* [CP] Check Pods Manifest.lock */,
+				4E81E184A9F05E4601FB960D /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
+				27CD4BB4E0D5F89898EC7A52 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -223,12 +224,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "DobbyCraft" */;
 			buildPhases = (
-				FC1E87B5DEB0F039BCD5B406 /* [CP] Check Pods Manifest.lock */,
+				B0A57F73E50827BBC8497DF8 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				0B1D5DA0EA8B1BC5A3E0AFCF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -243,7 +245,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "DobbyCraft-tvOS" */;
 			buildPhases = (
-				5FF844EAE4A7C3C4CD1AA996 /* [CP] Check Pods Manifest.lock */,
+				4AB01718D5D076C87698F874 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -263,7 +265,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "DobbyCraft-tvOSTests" */;
 			buildPhases = (
-				6D5059F2B92190712762EBE9 /* [CP] Check Pods Manifest.lock */,
+				EC35568A4F26DE20C952FFA7 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -375,6 +377,42 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		0B1D5DA0EA8B1BC5A3E0AFCF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DobbyCraft/Pods-DobbyCraft-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DobbyCraft/Pods-DobbyCraft-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		27CD4BB4E0D5F89898EC7A52 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DobbyCraft-DobbyCraftTests/Pods-DobbyCraft-DobbyCraftTests-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DobbyCraft-DobbyCraftTests/Pods-DobbyCraft-DobbyCraftTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -389,29 +427,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		500C5A85A7E0A147B63A6396 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DobbyCraft-DobbyCraftTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5FF844EAE4A7C3C4CD1AA996 /* [CP] Check Pods Manifest.lock */ = {
+		4AB01718D5D076C87698F874 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -433,7 +449,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6D5059F2B92190712762EBE9 /* [CP] Check Pods Manifest.lock */ = {
+		4E81E184A9F05E4601FB960D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -448,14 +464,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DobbyCraft-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-DobbyCraft-DobbyCraftTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FC1E87B5DEB0F039BCD5B406 /* [CP] Check Pods Manifest.lock */ = {
+		B0A57F73E50827BBC8497DF8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -471,6 +487,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-DobbyCraft-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC35568A4F26DE20C952FFA7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DobbyCraft-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -582,7 +620,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A7E8459F39AE9617007DF6B1 /* Pods-DobbyCraft-DobbyCraftTests.debug.xcconfig */;
+			baseConfigurationReference = 5FDB288F7D9324BE367F78EB /* Pods-DobbyCraft-DobbyCraftTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -605,7 +643,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F1E11AD4E5331543C19C23A /* Pods-DobbyCraft-DobbyCraftTests.release.xcconfig */;
+			baseConfigurationReference = 1C82DC1AF4BB173B5A9EE5BC /* Pods-DobbyCraft-DobbyCraftTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -625,7 +663,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C13C751D843C0ED921C59771 /* Pods-DobbyCraft.debug.xcconfig */;
+			baseConfigurationReference = BBF2F6683BEF2B0FF9FD28E6 /* Pods-DobbyCraft.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -653,7 +691,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AE74CB51AE5606183EBEEAD9 /* Pods-DobbyCraft.release.xcconfig */;
+			baseConfigurationReference = 548E109256CBAD6B9488D532 /* Pods-DobbyCraft.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -675,7 +713,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3C8A6B4CB6C71AB2E295508A /* Pods-DobbyCraft-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 4D7E1C4182BB3F73E5E55DE0 /* Pods-DobbyCraft-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -703,7 +741,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 09195FFA6D501CA046A10E03 /* Pods-DobbyCraft-tvOS.release.xcconfig */;
+			baseConfigurationReference = E3A5D6A3A9DF407DFC1A49B8 /* Pods-DobbyCraft-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -731,7 +769,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EED5F9B3E5EE0421590CAEA3 /* Pods-DobbyCraft-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = F4BFF3CA1454684DE878B7AB /* Pods-DobbyCraft-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -758,7 +796,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD197191C05B3A467FB9577D /* Pods-DobbyCraft-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = F028929EB93FF3CED6EE7DD9 /* Pods-DobbyCraft-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;

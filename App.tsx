@@ -1,88 +1,85 @@
-import AsyncStorage from "@react-native-community/async-storage";
-import NetInfo from '@react-native-community/netinfo'
-import axios from "axios";
-import { observer, Provider } from "mobx-react";
-import React from "react";
+import NetInfo from '@react-native-community/netinfo';
+import React, { useRef, useState } from 'react';
+import useAsyncEffect from './src/utils/useAsyncEffect';
+import { ProvideUserData } from './src/User';
 import {
-	Alert,
-	BackHandler,
-	NativeModules,
-	Platform,
-	Text,
-	View,
-	TouchableOpacity,
-	YellowBox,
-} from "react-native";
-import FastImage from "react-native-fast-image";
-import Permissions from "react-native-permissions";
+  Alert,
+  BackHandler,
+  NativeModules,
+  Platform,
+  YellowBox,
+} from 'react-native';
+import { request } from 'react-native-permissions';
 import {
-	createAppContainer,
-	createBottomTabNavigator,
-	createStackNavigator,
-	createSwitchNavigator,
-	NavigationActions,
-	NavigationContainerComponent,
-	NavigationScreenOptions,
-	NavigationScreenProp,
-} from "react-navigation";
-// import TabButton from "./src/components/TabButton";
-// import fonts from "./src/constants/fonts";
+  createAppContainer,
+  createSwitchNavigator,
+  NavigationContainerComponent,
+} from 'react-navigation';
 
-// import stores from "./src/stores";
+import Loading from './src/screens/Loading';
+import Login from './src/screens/Login';
+import Home from './src/screens/Home';
 
-let currentIndex: number = 0;
+import requiredPermissions from './src/constants/requiredPermissions';
 
-export const { exitApp } = NativeModules;
+const MainSwitch = createSwitchNavigator(
+  {
+    Loading,
+    Login,
+    Home,
+  },
+  {
+    initialRouteName: 'Loading',
+  },
+);
+
+const AppContainer = createAppContainer(MainSwitch);
+
+function App() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const navigator = useRef<NavigationContainerComponent>(null);
+
+  useAsyncEffect(async function requestPermissions() {
+    for (const requiredPermission of requiredPermissions[Platform.OS]) {
+      await request(requiredPermission);
+    }
+  });
+
+  useAsyncEffect(async function checkNetworkConnection() {
+    const { isConnected } = await NetInfo.fetch();
+
+    if (!isConnected) {
+      Alert.alert(
+        '알림',
+        '인터넷이 연결되어 있지 않습니다.\n앱을 종료합니다.',
+        [
+          {
+            text: '확인',
+            onPress: () =>
+              Platform.OS === 'ios'
+                ? NativeModules.exitApp.exitApp()
+                : BackHandler.exitApp(),
+          },
+        ],
+        { cancelable: false },
+      );
+    }
+  });
+
+  return (
+    <ProvideUserData>
+      <AppContainer
+        ref={navigator}
+        onNavigationStateChange={(_, { index: nextIndex }) =>
+          setCurrentIndex(nextIndex)
+        }
+      />
+    </ProvideUserData>
+  );
+}
 
 YellowBox.ignoreWarnings([
-	"Unrecognized WebSocket connection option(s) `agent`, `perMessageDeflate`, `pfx`, `key`, `passphrase`, `cert`, `ca`, `ciphers`, `rejectUnauthorized`. Did you mean to put these under `headers`?",
+  'Unrecognized WebSocket connection option(s) `agent`, `perMessageDeflate`, `pfx`, `key`, `passphrase`, `cert`, `ca`, `ciphers`, `rejectUnauthorized`. Did you mean to put these under `headers`?',
 ]);
-
-@observer
-class App extends React.Component<{}> {
-	constructor(props: any) {
-		super(props);
-	}
-
-	navigation = React.createRef<NavigationContainerComponent>();
-
-
-	componentDidMount = async () => {
-		if (Platform.OS === "android")
-			await Permissions.request("storage", { type: "always" });
-
-
-		NetInfo.fetch().then(state => { // Not Connected Network.
-			  !state.isConnected &&
-				Alert.alert(
-					"알림",
-					"인터넷이 연결되어 있지 않습니다.\n앱을 종료합니다.",
-					[
-						{
-							text: "확인",
-							onPress: () => {
-								if (Platform.OS === "ios") {
-									exitApp.exitApp(); //Exit
-								} else {
-									BackHandler.exitApp(); //Exit
-								}
-							},
-						},
-					], 
-					{ cancelable: false }
-				);
-		});
-
-	};
-
-
-	render() {
-		return (
-			<View>
-				<Text>asdas</Text>
-			</View>
-		);
-	}
-}
 
 export default App;
