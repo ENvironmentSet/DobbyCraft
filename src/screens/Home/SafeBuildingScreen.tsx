@@ -483,6 +483,17 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
                       ],
                       { cancelable: false },
                     );
+                  } else {
+                    Alert.alert(
+                      'Notice',
+                      'Review sent!',
+                      [
+                        {
+                          text: 'Confirm',
+                        },
+                      ],
+                      { cancelable: false },
+                    );
                   }
                   setIsLongSeen(false);
                 } else {
