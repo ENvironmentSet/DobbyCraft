@@ -438,9 +438,9 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
               </Text>
               <AgreementPolicy
                 label="Yes"
-                isActive={field1 === 5}
+                isActive={field6 === 5}
                 onActivationChange={activation =>
-                  activation ? setField1(5) : setField1(0)
+                  activation ? setField6(5) : setField6(0)
                 }
               />
               <AgreementPolicy
@@ -485,17 +485,19 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
                     );
                   }
                   setIsLongSeen(false);
+                } else {
+                  Alert.alert(
+                    'Notice',
+                    "You didn't filled the whole form, check it.",
+                    [
+                      {
+                        text: 'Confirm',
+                      },
+                    ],
+                    { cancelable: false },
+                  );
                 }
-                Alert.alert(
-                  'Notice',
-                  "You didn't filled the whole form, check it.",
-                  [
-                    {
-                      text: 'Confirm',
-                    },
-                  ],
-                  { cancelable: false },
-                );
+                
               }}
             />
           </View>
