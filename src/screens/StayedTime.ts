@@ -1,6 +1,7 @@
 //@ts-ignore-next-line
 import BackgroundTimer from 'react-native-background-timer';
 import Geolocation from '@react-native-community/geolocation';
+import { Alert } from 'react-native';
 
 let countedTime = 0;
 let isOn = false;
@@ -71,6 +72,17 @@ export function runStayTimer(userHome: {
         if (isNearby(userHome, coords)) {
           countedTime += 1;
         } else {
+          Alert.alert(
+            'Notice',
+            "You just exited your home, right? we've just stop counting time you staying at home. To restart counter, please press confirm.",
+            [
+              {
+                text: 'Confirm',
+                onPress: () => runStayTimer(userHome),
+              },
+            ],
+            { cancelable: false },
+          );
           stopStayTimer();
         }
       });
