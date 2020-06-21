@@ -316,45 +316,72 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
               </Text>
               <AgreementPolicy
                 label="Yes"
-                onActivationChange={() => setField1(5)}
+                isActive={field1 === 5}
+                onActivationChange={activation =>
+                  activation ? setField1(5) : setField1(0)
+                }
               />
               <AgreementPolicy
                 label="No"
-                onActivationChange={() => setField1(1)}
+                isActive={field1 === 1}
+                onActivationChange={activation =>
+                  activation ? setField1(1) : setField1(0)
+                }
               />
               <AgreementPolicy
                 label="Unable to know"
-                onActivationChange={() => setField1(2)}
+                isActive={field1 === 2}
+                onActivationChange={activation =>
+                  activation ? setField1(2) : setField1(0)
+                }
               />
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
                 2. Is the sanitizer placed all over the building?
               </Text>
               <AgreementPolicy
                 label="Yes"
-                onActivationChange={() => setField2(5)}
+                isActive={field2 === 5}
+                onActivationChange={activation =>
+                  activation ? setField2(5) : setField2(0)
+                }
               />
               <AgreementPolicy
                 label="No"
-                onActivationChange={() => setField2(1)}
+                isActive={field2 === 1}
+                onActivationChange={activation =>
+                  activation ? setField2(1) : setField2(0)
+                }
               />
               <AgreementPolicy
                 label="Unable to know"
-                onActivationChange={() => setField2(2)}
+                isActive={field2 === 2}
+                onActivationChange={activation =>
+                  activation ? setField2(2) : setField2(0)
+                }
               />
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
                 3. Does disinfection run or a regular?
               </Text>
               <AgreementPolicy
                 label="Yes"
-                onActivationChange={() => setField3(5)}
+                isActive={field3 === 5}
+                onActivationChange={activation =>
+                  activation ? setField3(5) : setField3(0)
+                }
               />
               <AgreementPolicy
                 label="No"
-                onActivationChange={() => setField3(1)}
+                isActive={field3 === 1}
+                onActivationChange={activation =>
+                  activation ? setField3(1) : setField3(0)
+                }
               />
               <AgreementPolicy
                 label="Unable to know"
-                onActivationChange={() => setField3(2)}
+                isActive={field3 === 2}
+                onActivationChange={activation =>
+                  activation ? setField3(2) : setField3(0)
+                }
               />
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
                 4. Is the thermal sensing camera is at the entrance to the
@@ -362,15 +389,24 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
               </Text>
               <AgreementPolicy
                 label="Yes"
-                onActivationChange={() => setField4(5)}
+                isActive={field4 === 5}
+                onActivationChange={activation =>
+                  activation ? setField4(5) : setField4(0)
+                }
               />
               <AgreementPolicy
                 label="No"
-                onActivationChange={() => setField4(1)}
+                isActive={field4 === 1}
+                onActivationChange={activation =>
+                  activation ? setField4(1) : setField4(0)
+                }
               />
               <AgreementPolicy
                 label="Unable to know"
-                onActivationChange={() => setField4(2)}
+                isActive={field4 === 2}
+                onActivationChange={activation =>
+                  activation ? setField4(2) : setField4(0)
+                }
               />
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
                 5. Is the clinical thermometer is at the entrance to the
@@ -378,30 +414,48 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
               </Text>
               <AgreementPolicy
                 label="Yes"
-                onActivationChange={() => setField5(5)}
+                isActive={field5 === 5}
+                onActivationChange={activation =>
+                  activation ? setField5(5) : setField5(0)
+                }
               />
               <AgreementPolicy
                 label="No"
-                onActivationChange={() => setField5(1)}
+                isActive={field5 === 1}
+                onActivationChange={activation =>
+                  activation ? setField5(1) : setField5(0)
+                }
               />
               <AgreementPolicy
                 label="Unable to know"
-                onActivationChange={() => setField5(2)}
+                isActive={field5 === 2}
+                onActivationChange={activation =>
+                  activation ? setField5(2) : setField5(0)
+                }
               />
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
                 6. Do Most People wear masks ?
               </Text>
               <AgreementPolicy
                 label="Yes"
-                onActivationChange={() => setField6(5)}
+                isActive={field1 === 5}
+                onActivationChange={activation =>
+                  activation ? setField1(5) : setField1(0)
+                }
               />
               <AgreementPolicy
                 label="No"
-                onActivationChange={() => setField6(1)}
+                isActive={field6 === 1}
+                onActivationChange={activation =>
+                  activation ? setField6(1) : setField6(0)
+                }
               />
               <AgreementPolicy
                 label="Unable to know"
-                onActivationChange={() => setField6(2)}
+                isActive={field6 === 2}
+                onActivationChange={activation =>
+                  activation ? setField6(2) : setField6(0)
+                }
               />
             </ScrollView>
           </View>
@@ -409,27 +463,39 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
             <Button
               buttonLabel="SUBMIT"
               onClickButton={async () => {
-                const { success } = await request<{ success: 0 | 1 }>(
-                  'buildings',
-                  {
-                    method: 'POST',
-                    body: `username=${name}&buildingIdx=${selectedBuilding?.buildingIdx}&field1=${field1}&field2=${field2}&field3=${field3}&field4=${field4}&field5=${field5}&field6=${field6}`,
-                  },
-                );
-
-                if (!success) {
-                  Alert.alert(
-                    'Error',
-                    "Can't send review",
-                    [
-                      {
-                        text: 'Confirm',
-                      },
-                    ],
-                    { cancelable: false },
+                if (field1 && field2 && field3 && field4 && field5 && field6) {
+                  const { success } = await request<{ success: 0 | 1 }>(
+                    'buildings',
+                    {
+                      method: 'POST',
+                      body: `username=${name}&buildingIdx=${selectedBuilding?.buildingIdx}&field1=${field1}&field2=${field2}&field3=${field3}&field4=${field4}&field5=${field5}&field6=${field6}`,
+                    },
                   );
+
+                  if (!success) {
+                    Alert.alert(
+                      'Error',
+                      "Can't send review",
+                      [
+                        {
+                          text: 'Confirm',
+                        },
+                      ],
+                      { cancelable: false },
+                    );
+                  }
+                  setIsLongSeen(false);
                 }
-                setIsLongSeen(false);
+                Alert.alert(
+                  'Notice',
+                  "You didn't filled the whole form, check it.",
+                  [
+                    {
+                      text: 'Confirm',
+                    },
+                  ],
+                  { cancelable: false },
+                );
               }}
             />
           </View>

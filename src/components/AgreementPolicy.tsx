@@ -6,13 +6,13 @@ const AfterIcon = require('../assets/after.png');
 
 interface AgreementPolicyProps {
   label: string;
-  isActive?: boolean;
+  isActive: boolean;
   onActivationChange: (value: boolean) => void;
 }
 
 const AgreementPolicy: React.FC<AgreementPolicyProps> = ({
   label,
-  isActive = false,
+  isActive,
   onActivationChange,
 }) => {
   return (
