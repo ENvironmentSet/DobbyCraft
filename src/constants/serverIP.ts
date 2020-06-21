@@ -1,3 +1,3 @@
-const serverIP = 'http://192.168.0.32:2000/';
+const serverIP = 'http://52.79.112.13:2000/';
 
 export default serverIP;
