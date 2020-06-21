@@ -81,7 +81,7 @@ export function runStayTimer(userHome: {
                 onPress: () => runStayTimer(userHome),
               },
             ],
-            { cancelable: false },
+            { cancelable: true },
           );
           stopStayTimer();
         }

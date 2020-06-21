@@ -72,7 +72,7 @@ const SignUpHome: React.FC<SignUpHomeProps> = ({ navigation }) => {
         let {
           results: [{ address_components, formatted_address }],
         } = await response.json();
-        
+
         setUserAddr(
           address_components.find(({ types }: { types: string[] }) =>
             types.includes('political'),
