@@ -177,25 +177,15 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
                 Safety Level
               </Text>
-              {selectedBuilding?.safetyLevel === 'UNKNOWN' ? (
-                <Text
-                  style={{
-                    fontSize: 40,
-                    fontWeight: 'bold',
-                    marginVertical: 10,
-                  }}>
-                  {selectedBuilding?.safetyLevel}
-                </Text>
-              ) : (
-                <Text
-                  style={{
-                    fontSize: 60,
-                    fontWeight: 'bold',
-                    marginVertical: 10,
-                  }}>
-                  {selectedBuilding?.safetyLevel}
-                </Text>
-              )}
+              <Text
+                style={{
+                  fontSize:
+                    selectedBuilding?.safetyLevel === 'UNKNOWN' ? 30 : 60,
+                  fontWeight: 'bold',
+                  marginVertical: 10,
+                }}>
+                {selectedBuilding?.safetyLevel}
+              </Text>
               <Text
                 style={{
                   fontSize: 20,
