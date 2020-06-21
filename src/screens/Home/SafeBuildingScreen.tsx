@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   StyleSheet,
   ViewStyle,
@@ -6,7 +6,7 @@ import {
   View,
   TouchableWithoutFeedback,
 } from 'react-native';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import FastImage from 'react-native-fast-image';
 import { NavigationScreenProp } from 'react-navigation';
 import Geolocation from '@react-native-community/geolocation';
@@ -15,31 +15,75 @@ import Modal from 'react-native-modal';
 import Button from '../../components/Button';
 import { ScrollView } from 'react-native-gesture-handler';
 import AgreementPolicy from '../../components/AgreementPolicy';
+import useAsyncEffect from '../../utils/useAsyncEffect';
+import request from '../../utils/request';
+import { useUserData } from '../../User';
 
 const CloseIcn = require('../../assets/x.png');
+
+const marker = require('../../assets/marker.png');
 
 interface SafeBuildingProps {
   navigation: NavigationScreenProp<{}>;
 }
 
+interface Building {
+  buildingIdx: number;
+  buildingName: string;
+  longitude: string;
+  latitude: string;
+}
+
+interface BuildingDetail {
+  buildingName: string;
+  safetyLevel: string;
+  isReviewed: boolean;
+  checkItems: {
+    thermal: string;
+    mask: string;
+    disinfection: string;
+  };
+}
+
 const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
   useEffect(() => {
-    Geolocation.getCurrentPosition(async info => {
+    /**Geolocation.getCurrentPosition(async info => {
       setLatitude(info.coords.latitude);
       setLongitude(info.coords.longitude);
-    });
+    });**/ //@FIXME: 밑에 지우고 돌려놓기
+    setLatitude(127.120349);
+    setLongitude(37.510817);
   }, []);
 
-  const hideModal = () => {
-    setIsSeen(false);
-    setIsLongSeen(true);
-  };
+  const { name } = useUserData();
 
   const [latitude, setLatitude] = useState(37.5030415);
   const [longitude, setLongitude] = useState(126.946423);
   const [isSeen, setIsSeen] = useState(false);
   const [isLongSeen, setIsLongSeen] = useState(false);
-  const [multiActive, setMultiActive] = useState('');
+
+  const [buildings, setBuildings] = useState<Building[]>([]);
+
+  useAsyncEffect(async () => {
+    const { buildingList } = await request<{ buildingList: Building[] }>(
+      'buildings',
+      { method: 'GET' },
+    );
+
+    setBuildings(buildingList);
+  }, [latitude, longitude]);
+
+  const [selectedBuilding, setSelectedBuilding] = useState<
+    BuildingDetail | undefined
+  >();
+
+  const [] = useState(0);
+  const [] = useState(0);
+  const [] = useState(0);
+  const [] = useState(0);
+  const [] = useState(0);
+  const [] = useState(0);
+
   return (
     <View style={styles.mapWrapper}>
       <View
@@ -55,29 +99,52 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
           paddingRight: 20,
           paddingTop: 20,
         }}>
-        <TouchableWithoutFeedback
-          onPress={() => (isLongSeen ? setIsLongSeen(false) : setIsSeen(true))}>
+        <TouchableWithoutFeedback onPress={() => {
+          if (isLongSeen) setIsLongSeen(false);
+          else if(isSeen) setIsSeen(false);
+          else navigation.goBack();
+        }}>
           <FastImage source={CloseIcn} style={{ width: 25, height: 25 }} />
         </TouchableWithoutFeedback>
       </View>
       <MapView
         provider={PROVIDER_GOOGLE} // remove if not using Google Maps
         style={styles.map}
-        region={{
+        region={{ //@FIXME: 승천 문제
           latitude,
           longitude,
           latitudeDelta: 0.001,
           longitudeDelta: 0.001,
-        }}
-      />
+        }}>
+        {buildings.map(building => (
+          <Marker
+            image={marker}
+            title={building.buildingName}
+            coordinate={{
+              latitude: Number(building.latitude),
+              longitude: Number(building.longitude),
+            }}
+            key={building.buildingIdx}
+            onPress={async () => {
+              const buildingDetail = await request<BuildingDetail>(
+                `buildings/${building.buildingIdx}`,
+                { method: 'POST', body: `username=${name}` },
+              );
+
+              setSelectedBuilding(buildingDetail);
+              setIsSeen(true);
+            }}
+          />
+        ))}
+      </MapView>
       <Modal
         isVisible={isSeen}
         swipeDirection={['up', 'left', 'right', 'down']}
         onBackdropPress={() => {
-          hideModal();
+          setIsSeen(false);
         }}
         onBackButtonPress={() => {
-          hideModal();
+          setIsSeen(false);
         }}
         style={{
           justifyContent: 'flex-end',
@@ -93,10 +160,7 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
             borderTopRightRadius: 14,
           }}>
           <Text style={{ fontSize: 30, fontWeight: 'bold' }}>
-            Building Name
-          </Text>
-          <Text style={{ fontSize: 18, marginTop: 20 }}>
-            this... is... sub address
+            {selectedBuilding?.buildingName}
           </Text>
           <View
             style={{
@@ -119,7 +183,7 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
                   fontWeight: 'bold',
                   marginVertical: 10,
                 }}>
-                4.8
+                {selectedBuilding?.safetyLevel}
               </Text>
               <Text
                 style={{
@@ -138,7 +202,11 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
                   flex: 1,
                 }}>
                 <FastImage
-                  source={require('../../assets/before.png')}
+                  source={
+                    selectedBuilding?.checkItems.thermal === 'Y'
+                      ? require('../../assets/after.png')
+                      : require('../../assets/before.png')
+                  }
                   style={{ width: 24, height: 24 }}
                 />
                 <Text
@@ -149,7 +217,11 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
               <View
                 style={{ flexDirection: 'row', alignItems: 'center', flex: 1 }}>
                 <FastImage
-                  source={require('../../assets/before.png')}
+                  source={
+                    selectedBuilding?.checkItems.mask === 'Y'
+                      ? require('../../assets/after.png')
+                      : require('../../assets/before.png')
+                  }
                   style={{ width: 24, height: 24 }}
                 />
                 <Text
@@ -165,7 +237,11 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
                   justifyContent: 'flex-start',
                 }}>
                 <FastImage
-                  source={require('../../assets/before.png')}
+                  source={
+                    selectedBuilding?.checkItems.disinfection === 'Y'
+                      ? require('../../assets/after.png')
+                      : require('../../assets/before.png')
+                  }
                   style={{ width: 24, height: 24 }}
                 />
                 <Text
@@ -176,12 +252,21 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
             </View>
           </View>
           <View style={{ marginBottom: 40 }}>
-            <Button
-              buttonLabel="REVIEW HERE"
-              onClickButton={() => {
-                hideModal();
-              }}
-            />
+            {selectedBuilding?.isReviewed ?
+              (<Button //@FIXME: 버튼 회색
+                buttonLabel="I've already reviewed"
+                onClickButton={() => {
+                  setIsSeen(false);
+                }}
+              />) :
+              (<Button
+                buttonLabel="REVIEW HERE"
+                onClickButton={() => {
+                  setIsSeen(false);
+                  setIsLongSeen(true);
+                }}
+              />)
+            }
           </View>
         </View>
       </Modal>
@@ -211,10 +296,7 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
               marginTop: 40,
               marginHorizontal: 30,
             }}>
-            Building Name
-          </Text>
-          <Text style={{ fontSize: 18, marginTop: 20, marginHorizontal: 30 }}>
-            this... is... sub address
+            {selectedBuilding?.buildingName}
           </Text>
           <View style={{ flex: 1, marginHorizontal: 30, marginTop: 50 }}>
             <ScrollView>
@@ -257,18 +339,13 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
               <AgreementPolicy label="Yes" />
               <AgreementPolicy label="No" />
               <AgreementPolicy label="Unable to know" />
-              <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
-                7. Let us know if anything to add or comment on? (optional)
-              </Text>
-              <AgreementPolicy label="Yes" />
-              <AgreementPolicy label="No" />
-              <AgreementPolicy label="Unable to know" />
             </ScrollView>
           </View>
           <View style={{ marginBottom: 40, marginHorizontal: 30 }}>
             <Button
               buttonLabel="SUBMIT"
               onClickButton={() => {
+                //@FIXME: Request
                 setIsLongSeen(false);
               }}
             />
