@@ -97,18 +97,20 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
           paddingRight: 20,
           paddingTop: 20,
         }}>
-        <TouchableWithoutFeedback onPress={() => {
-          if (isLongSeen) setIsLongSeen(false);
-          else if(isSeen) setIsSeen(false);
-          else navigation.goBack();
-        }}>
+        <TouchableWithoutFeedback
+          onPress={() => {
+            if (isLongSeen) setIsLongSeen(false);
+            else if (isSeen) setIsSeen(false);
+            else navigation.goBack();
+          }}>
           <FastImage source={CloseIcn} style={{ width: 25, height: 25 }} />
         </TouchableWithoutFeedback>
       </View>
       <MapView
         provider={PROVIDER_GOOGLE} // remove if not using Google Maps
         style={styles.map}
-        region={{ //@FIXME: 승천 문제
+        region={{
+          //@FIXME: 승천 문제
           latitude,
           longitude,
           latitudeDelta: 0.001,
@@ -175,14 +177,25 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
                 Safety Level
               </Text>
-              <Text
-                style={{
-                  fontSize: 60,
-                  fontWeight: 'bold',
-                  marginVertical: 10,
-                }}>
-                {selectedBuilding?.safetyLevel}
-              </Text>
+              {selectedBuilding?.safetyLevel === 'UNKNOWN' ? (
+                <Text
+                  style={{
+                    fontSize: 40,
+                    fontWeight: 'bold',
+                    marginVertical: 10,
+                  }}>
+                  {selectedBuilding?.safetyLevel}
+                </Text>
+              ) : (
+                <Text
+                  style={{
+                    fontSize: 60,
+                    fontWeight: 'bold',
+                    marginVertical: 10,
+                  }}>
+                  {selectedBuilding?.safetyLevel}
+                </Text>
+              )}
               <Text
                 style={{
                   fontSize: 20,
@@ -250,21 +263,22 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
             </View>
           </View>
           <View style={{ marginBottom: 40 }}>
-            {selectedBuilding?.isReviewed ?
-              (<Button //@FIXME: 버튼 회색
+            {selectedBuilding?.isReviewed ? (
+              <Button //@FIXME: 버튼 회색
                 buttonLabel="I've already reviewed"
                 onClickButton={() => {
                   setIsSeen(false);
                 }}
-              />) :
-              (<Button
+              />
+            ) : (
+              <Button
                 buttonLabel="REVIEW HERE"
                 onClickButton={() => {
                   setIsSeen(false);
                   setIsLongSeen(true);
                 }}
-              />)
-            }
+              />
+            )}
           </View>
         </View>
       </Modal>
