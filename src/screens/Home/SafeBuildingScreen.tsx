@@ -256,11 +256,12 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
           </View>
           <View style={{ marginBottom: 40 }}>
             {selectedBuilding?.isReviewed ? (
-              <Button //@FIXME: 버튼 회색
+              <Button
                 buttonLabel="I've already reviewed"
                 onClickButton={() => {
                   setIsSeen(false);
                 }}
+                isGray
               />
             ) : (
               <Button
