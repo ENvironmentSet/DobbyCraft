@@ -75,12 +75,12 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
     BuildingDetail | undefined
   >();
 
-  const [] = useState(0);
-  const [] = useState(0);
-  const [] = useState(0);
-  const [] = useState(0);
-  const [] = useState(0);
-  const [] = useState(0);
+  const [field1, setField1] = useState(0);
+  const [field2, setField2] = useState(0);
+  const [field3, setField3] = useState(0);
+  const [field4, setField4] = useState(0);
+  const [field5, setField5] = useState(0);
+  const [field6, setField6] = useState(0);
 
   return (
     <View style={styles.mapWrapper}>
@@ -110,7 +110,6 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
         provider={PROVIDER_GOOGLE} // remove if not using Google Maps
         style={styles.map}
         region={{
-          //@FIXME: 승천 문제
           latitude,
           longitude,
           latitudeDelta: 0.001,
@@ -130,6 +129,9 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
                 `buildings/${building.buildingIdx}`,
                 { method: 'POST', body: `username=${name}` },
               );
+
+              setLatitude(Number(building.latitude));
+              setLongitude(Number(building.longitude));
 
               setSelectedBuilding(buildingDetail);
               setIsSeen(true);
@@ -346,7 +348,7 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
           <View style={{ marginBottom: 40, marginHorizontal: 30 }}>
             <Button
               buttonLabel="SUBMIT"
-              onClickButton={() => {
+              onClickButton={async () => {
                 //@FIXME: Request
                 setIsLongSeen(false);
               }}
