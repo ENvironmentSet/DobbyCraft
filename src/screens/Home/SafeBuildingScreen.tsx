@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   ViewStyle,
@@ -47,12 +47,10 @@ interface BuildingDetail {
 
 const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
   useEffect(() => {
-    /**Geolocation.getCurrentPosition(async info => {
+    Geolocation.getCurrentPosition(async info => {
       setLatitude(info.coords.latitude);
       setLongitude(info.coords.longitude);
-    });**/ //@FIXME: 밑에 지우고 돌려놓기
-    setLatitude(127.120349);
-    setLongitude(37.510817);
+    });
   }, []);
 
   const { name } = useUserData();
