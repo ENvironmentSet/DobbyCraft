@@ -438,7 +438,7 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
               </Text>
               <AgreementPolicy
                 label="Yes"
-                isActive={field1 === 5}
+                isActive={field6 === 5}
                 onActivationChange={activation =>
                   activation ? setField1(5) : setField1(0)
                 }
@@ -476,6 +476,17 @@ const SafeBuildingScreen: React.FC<SafeBuildingProps> = ({ navigation }) => {
                     Alert.alert(
                       'Error',
                       "Can't send review",
+                      [
+                        {
+                          text: 'Confirm',
+                        },
+                      ],
+                      { cancelable: false },
+                    );
+                  } else {
+                    Alert.alert(
+                      'Notice',
+                      'Review sent!',
                       [
                         {
                           text: 'Confirm',
